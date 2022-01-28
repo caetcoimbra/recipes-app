@@ -4,6 +4,8 @@ import userEvent from '@testing-library/user-event';
 import Explore from '../Pages/Explore';
 import renderWithRouter from '../Helpers/renderWithRouter';
 
+// Testes do componente Explore
+
 describe('Testa o componente Explore', () => {
   it('Verifica se o componente Explore se encontra na rota "/explore"',
     () => {
