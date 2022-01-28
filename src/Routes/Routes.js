@@ -11,6 +11,7 @@ function Routes() {
         <Route exact path="/" component={ Login } />
         <Route exact path="/foods" />
         <Route exact path="/explore" component={ Explore } />
+        <Route exact path="/explore:id" />
       </Switch>
     </BrowserRouter>
   );
