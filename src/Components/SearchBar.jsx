@@ -10,6 +10,7 @@ function SearchBar(props) {
   return (
     <>
       <input
+        className="search-input"
         data-testid="search-input"
         type="text"
         placeholder="Search recipes"
@@ -58,9 +59,6 @@ function SearchBar(props) {
         className="search-button"
         type="button"
         onClick={ () => {
-          console.log(filter);
-          console.log(input);
-          console.log(pageName);
           getRecipesByFilter(pageName, filter, input);
         } }
       >

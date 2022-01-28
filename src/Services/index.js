@@ -3,9 +3,9 @@ const urlFilterFoods = 'https://www.themealdb.com/api/json/v1/1/filter.php?';
 let urlFilter = '';
 
 const getRecipesByFilter = async (type, filter, input) => {
-  if (type === 'foods') {
+  if (type === 'Foods') {
     urlFilter = urlFilterFoods;
-  } else if (type === 'drinks') {
+  } else if (type === 'Drinks') {
     urlFilter = urlFilterDrinks;
   }
   let choosenFilter = `i=${input}`;
@@ -19,7 +19,7 @@ const getRecipesByFilter = async (type, filter, input) => {
   default:
     choosenFilter = `i=${input}`;
   }
-  console.log(choosenFilter);
+  console.log(`${urlFilter}${choosenFilter}`);
   const response = await fetch(`${urlFilter}${choosenFilter}`);
   const responseJson = await response.json();
   console.log(responseJson);

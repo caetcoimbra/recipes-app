@@ -13,7 +13,7 @@ function Header(props) {
   const [searchBar, setSearchBar] = useState(false);
   return (
     <>
-      <header>
+      <header className="header-conteiner">
         <button
           data-testid="profile-top-btn"
           type="button"
