@@ -1,8 +1,8 @@
-html,
-body {
+html, body {
   margin: 0;
   padding: 0;
 }
+
 .footer {
   bottom: 0;
   position: fixed;
