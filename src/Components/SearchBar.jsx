@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
+import PropType from 'prop-types';
+import getRecipesByFilter from '../Services';
 import './SearchBar.css';
 
-function SearchBar() {
+function SearchBar(props) {
+  const { pageName } = props;
   const [filter, setFilter] = useState('Ingredient');
+  const [input, setInput] = useState('');
   return (
     <>
       <input
         data-testid="search-input"
         type="text"
         placeholder="Search recipes"
+        onChange={ ({ target }) => { setInput(target.value); } }
       />
       <div className="input-button-container">
         <label htmlFor="input-ingredient">
@@ -52,12 +57,21 @@ function SearchBar() {
         data-testid="exec-search-btn"
         className="search-button"
         type="button"
-        onClick={ () => { console.log(filter); } }
+        onClick={ () => {
+          console.log(filter);
+          console.log(input);
+          console.log(pageName);
+          getRecipesByFilter(pageName, filter, input);
+        } }
       >
         Search
       </button>
     </>
   );
 }
+
+SearchBar.propTypes = {
+  pageName: PropType.string.isRequired,
+};
 
 export default SearchBar;

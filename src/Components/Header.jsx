@@ -32,7 +32,7 @@ function Header(props) {
           <img src={ searchIcon } alt="search icon" />
         </button>
       </header>
-      { searchBar && <SearchBar /> }
+      { searchBar && <SearchBar pageName={ pageName } /> }
     </>
   );
 }
