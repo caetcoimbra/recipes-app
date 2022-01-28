@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import Input from '../Components/Input';
 import Button from '../Components/Button';
 import Form from '../Components/Form';
 
-function Login() {
+function Login({ history }) {
   const [user, setUser] = useState({
     email: '',
     senha: '',
@@ -30,6 +31,8 @@ function Login() {
     event.preventDefault();
     localStorage.setItem('mealsToken', 1);
     localStorage.setItem('cocktailsToken', 1);
+    localStorage.setItem('user', JSON.stringify({ email }));
+    history.push('/foods');
   };
 
   return (
@@ -66,5 +69,15 @@ function Login() {
     </Form>
   );
 }
+
+Login.defaultProps = {
+  history: {},
+};
+
+Login.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }),
+};
 
 export default Login;
