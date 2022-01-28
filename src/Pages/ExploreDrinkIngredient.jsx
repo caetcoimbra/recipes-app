@@ -1,7 +1,10 @@
 import React from 'react';
+import Header from '../Components/Header';
 
 function ExploreDrinkIngredient() {
-  return <div>ExploreDrinkIngredient</div>;
+  return (
+    <Header pageName="Foods" />
+  );
 }
 
 export default ExploreDrinkIngredient;

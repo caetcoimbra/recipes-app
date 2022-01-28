@@ -1,7 +1,10 @@
 import React from 'react';
+import Header from '../Components/Header';
 
 function Explore() {
-  return <div>Explore</div>;
+  return (
+    <Header pageName="Explore" />
+  );
 }
 
 export default Explore;

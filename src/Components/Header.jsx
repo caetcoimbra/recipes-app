@@ -14,23 +14,23 @@ function Header(props) {
   return (
     <>
       <header className="header-conteiner">
-        <button
+        <input
           data-testid="profile-top-btn"
-          type="button"
+          type="image"
+          src={ profileIcon }
+          alt="profile icon"
           onClick={ () => history.push('/profile') }
-        >
-          <img src={ profileIcon } alt="profile icon" />
-        </button>
-        <div data-testis="page-title">
+        />
+        <div data-testid="page-title">
           { pageName }
         </div>
-        <button
-          data-testis="search-top-btn"
-          type="button"
+        <input
+          data-testid="search-top-btn"
+          type="image"
+          src={ searchIcon }
+          alt="search icon"
           onClick={ () => { setSearchBar(!searchBar); } }
-        >
-          <img src={ searchIcon } alt="search icon" />
-        </button>
+        />
       </header>
       { searchBar && <SearchBar pageName={ pageName } /> }
     </>
