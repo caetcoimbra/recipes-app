@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import Login from '../Pages/Login';
 import Foods from '../Pages/Foods';
 import Drinks from '../Pages/Drinks';
@@ -17,11 +17,10 @@ import Profile from '../Pages/Profile';
 import RecipeDone from '../Pages/RecipeDone';
 import FavRecipe from '../Pages/FavRecipe';
 
-function Routes() {
-  return (
-    <BrowserRouter>
+class Routes extends React.Component {
+  render() {
+    return (
       <Switch>
-        {/* Pagina Login */}
         <Route exact path="/" component={ Login } />
         <Route exact path="/foods" component={ Foods } />
         <Route exact path="/drinks" component={ Drinks } />
@@ -51,8 +50,8 @@ function Routes() {
         <Route exact path="/done-recipes" component={ RecipeDone } />
         <Route exact path="/favorite-recipes" component={ FavRecipe } />
       </Switch>
-    </BrowserRouter>
-  );
+    );
+  }
 }
 
 export default Routes;
