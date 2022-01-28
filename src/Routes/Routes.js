@@ -1,5 +1,6 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
+import Explore from '../Pages/Explore';
 import Login from '../Pages/Login';
 import Foods from '../Pages/Foods';
 import Drinks from '../Pages/Drinks';
@@ -7,7 +8,6 @@ import FoodDetails from '../Pages/FoodDetails';
 import DrinkDetails from '../Pages/DrinkDetails';
 import FoodInProgress from '../Pages/FoodInProgress';
 import DrinkInProgress from '../Pages/DrinkInProgress';
-import Explore from '../Pages/Explore';
 import ExploreFood from '../Pages/ExploreFood';
 import ExploreDrink from '../Pages/ExploreDrink';
 import ExploreFoodIngredient from '../Pages/ExploreFoodIngredient';
