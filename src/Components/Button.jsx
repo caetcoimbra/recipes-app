@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function Button({ btnType, btnMethod, btnTestId, btnText }) {
+function Button({ btnType, btnMethod, btnTestId, btnText, btnDisabled }) {
   return (
     <button
       type={ btnType ? 'submit' : 'button' }
       data-testid={ btnTestId }
       onClick={ btnMethod }
+      disabled={ btnDisabled }
     >
       { btnText }
     </button>
@@ -18,6 +19,7 @@ Button.defaultProps = {
   btnMethod: () => {},
   btnTestId: '',
   btnText: '',
+  btnDisabled: false,
 };
 
 Button.propTypes = {
@@ -25,6 +27,7 @@ Button.propTypes = {
   btnMethod: PropTypes.func,
   btnTestId: PropTypes.string,
   btnText: PropTypes.string,
+  btnDisabled: PropTypes.bool,
 };
 
 export default Button;

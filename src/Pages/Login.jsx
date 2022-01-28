@@ -1,13 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Input from '../Components/Input';
 import Button from '../Components/Button';
+import Form from '../Components/Form';
 
 function Login() {
   const [user, setUser] = useState({
     email: '',
     senha: '',
   });
+  const [isDisabled, setIsDisabled] = useState(true);
   const { email, senha } = user;
+  const minLen = 6;
+
+  useEffect(() => {
+    if (email === 'email@mail.com' && senha.length > minLen) {
+      setIsDisabled(false);
+    }
+  }, [email, senha]);
 
   const handleChange = ({ target }) => {
     const { value, name } = target;
@@ -17,19 +26,25 @@ function Login() {
     });
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    localStorage.setItem('mealsToken', 1);
+    localStorage.setItem('cocktailsToken', 1);
+  };
+
   return (
-    <section>
-      <h1>Login</h1>
+    <Form formMethod={ handleSubmit }>
 
       {/* Input de Email */}
       <Input
         inputTestId="email-input"
-        inputType="text"
+        inputType="email"
         inputName="email"
         inputPlaceHolder="Email"
         inputValue={ email }
         inputMethod={ handleChange }
       />
+
       {/* Input de Senha */}
       <Input
         inputTestId="password-input"
@@ -41,15 +56,14 @@ function Login() {
       />
 
       {/* Botao Enter */}
-
       <Button
         btnTestId="login-submit-btn"
-        btnType="button"
-        btnMethod={ () => {} }
+        btnType="submit"
         btnText="Enter"
+        btnDisabled={ isDisabled }
       />
 
-    </section>
+    </Form>
   );
 }
 
