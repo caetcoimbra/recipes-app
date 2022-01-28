@@ -2,8 +2,8 @@ header {
   align-content: space-between;
   background-color: rgb(200, 200, 200);
   display: flex;
-  justify-content: space-between;
   height: 50px;
+  justify-content: space-between;
   width: 100%;
 }
 
