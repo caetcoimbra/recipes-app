@@ -1,14 +1,14 @@
 import React from 'react';
 import './App.css';
 import Routes from './Routes/Routes';
-import RecipeContext from './Context/RecipeContext';
+import RecipeProvider from './Components/RecipesProvider';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
-    <RecipeContext.Provider>
+    <RecipeProvider>
       <Routes />
-    </RecipeContext.Provider>
+    </RecipeProvider>
   );
 }
 

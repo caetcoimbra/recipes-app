@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../Components/Header';
+import RecipeContext from '../Context/RecipeContext';
 
 function Explore() {
+  const { setSearchBtn } = useContext(RecipeContext);
+  useEffect(() => {
+    setSearchBtn(false);
+  });
   return (
     <>
       <Header pageName="Explore" />
