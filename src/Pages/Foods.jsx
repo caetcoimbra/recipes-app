@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react';
+import CardList from '../Components/CardList';
 import Header from '../Components/Header';
 import RecipeContext from '../Context/RecipeContext';
 
@@ -7,8 +8,12 @@ function Foods() {
   useEffect(() => {
     setSearchBtn(true);
   });
+
   return (
-    <Header pageName="Foods" />
+    <div>
+      <Header pageName="Foods" />
+      <CardList />
+    </div>
   );
 }
 
