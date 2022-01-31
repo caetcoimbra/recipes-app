@@ -1,0 +1,21 @@
+.input-button-container {
+  display: flex;
+  justify-content: space-around;
+  width: 340px;
+}
+
+.radio-button {
+  margin: 5px;
+  width: 10px;
+}
+
+.search-button {
+  background-color: rgb(200, 200, 200);
+  border: 1px solid black;
+  margin-left: 10px;
+}
+
+input {
+  margin: 5px 10px;
+  width: 340px;
+}
