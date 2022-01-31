@@ -1,6 +1,7 @@
 const urlFilterDrinks = 'https://www.thecocktaildb.com/api/json/v1/1/';
 const urlFilterFoods = 'https://www.themealdb.com/api/json/v1/1/';
 let urlFilter = '';
+const errorMessage = 'Sorry, we haven\'t found any recipes for these filters.';
 
 const getRecipesByFilter = async (type, filter, input) => {
   if (type === 'Foods') {
@@ -20,10 +21,18 @@ const getRecipesByFilter = async (type, filter, input) => {
     choosenFilter = `filter.php?i=${input}`;
   }
   console.log(`${urlFilter}${choosenFilter}`);
-  const response = await fetch(`${urlFilter}${choosenFilter}`);
-  const responseJson = await response.json();
-  console.log(responseJson);
-  return responseJson;
+  try {
+    const response = await fetch(`${urlFilter}${choosenFilter}`);
+    const responseJson = await response.json();
+    const key = Object.keys(responseJson);
+    if (!responseJson[key]) {
+      global.alert(errorMessage);
+    }
+    return responseJson;
+  } catch (error) {
+    console.log(error);
+    global.alert(errorMessage);
+  }
 };
 
 export default getRecipesByFilter;

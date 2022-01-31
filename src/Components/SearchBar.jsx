@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropType from 'prop-types';
+import { useHistory } from 'react-router-dom';
 import getRecipesByFilter from '../Services';
 import './SearchBar.css';
 
@@ -7,6 +8,34 @@ function SearchBar(props) {
   const { pageName } = props;
   const [filter, setFilter] = useState('Ingredient');
   const [input, setInput] = useState('');
+  const history = useHistory();
+
+  const validateInput = ({ value }) => {
+    const error = 'Your search must have only 1 (one) character';
+    if (filter === 'First Letter' && value.length > 1) {
+      setInput(value.charAt(0));
+      global.alert(error);
+    }
+  };
+
+  const handleClick = async () => {
+    const recipes = await getRecipesByFilter(pageName, filter, input);
+    let searchType = 'meals';
+    let idType = 'idMeal';
+    let pageType = '/foods/';
+    if (pageName === 'Drinks') {
+      searchType = 'drinks';
+      idType = 'idDrink';
+      pageType = '/drinks/';
+    }
+    const size = recipes[searchType].length;
+    const idRecipe = recipes[searchType][0][idType];
+    console.log(recipes, searchType);
+    if (size === 1) {
+      history.push(`${pageType}${idRecipe}`);
+    }
+  };
+
   return (
     <>
       <input
@@ -14,7 +43,8 @@ function SearchBar(props) {
         data-testid="search-input"
         type="text"
         placeholder="Search recipes"
-        onChange={ ({ target }) => { setInput(target.value); } }
+        value={ input }
+        onChange={ ({ target }) => { setInput(target.value); validateInput(target); } }
       />
       <div className="input-button-container">
         <label htmlFor="input-ingredient">
@@ -58,9 +88,7 @@ function SearchBar(props) {
         data-testid="exec-search-btn"
         className="search-button"
         type="button"
-        onClick={ () => {
-          getRecipesByFilter(pageName, filter, input);
-        } }
+        onClick={ handleClick }
       >
         Search
       </button>
