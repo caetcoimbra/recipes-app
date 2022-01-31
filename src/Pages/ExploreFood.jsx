@@ -1,5 +1,6 @@
 import React, { useEffect, useContext } from 'react';
 import Header from '../Components/Header';
+import Footer from '../Components/Footer';
 import RecipeContext from '../Context/RecipeContext';
 
 function ExploreFood() {
@@ -8,7 +9,10 @@ function ExploreFood() {
     setSearchBtn(false);
   });
   return (
-    <Header pageName="Explore Foods" />
+    <>
+      <Header pageName="Explore Foods" />
+      <Footer />
+    </>
   );
 }
 
