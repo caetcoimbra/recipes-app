@@ -1,38 +1,47 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import PropType from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import './Header.css';
 import profileIcon from '../images/profileIcon.svg';
 import SearchBar from './SearchBar';
 import searchIcon from '../images/searchIcon.svg';
+import RecipeContext from '../Context/RecipeContext';
 
 function Header(props) {
   const { pageName } = props;
   const history = useHistory();
+  const context = useContext(RecipeContext);
+  const { searchBar, setSearchBar, hasSearch } = context;
+  console.log(context);
 
-  const [searchBar, setSearchBar] = useState(false);
+  function renderSearchButton() {
+    return (
+      <input
+        data-testid="search-top-btn"
+        type="image"
+        src={ searchIcon }
+        alt="search icon"
+        onClick={ () => { setSearchBar(!searchBar); } }
+      />
+    );
+  }
+
   return (
     <>
-      <header>
-        <button
+      <header className="header-conteiner">
+        <input
           data-testid="profile-top-btn"
-          type="button"
+          type="image"
+          src={ profileIcon }
+          alt="profile icon"
           onClick={ () => history.push('/profile') }
-        >
-          <img src={ profileIcon } alt="profile icon" />
-        </button>
-        <div data-testis="page-title">
+        />
+        <div data-testid="page-title">
           { pageName }
         </div>
-        <button
-          data-testis="search-top-btn"
-          type="button"
-          onClick={ () => { setSearchBar(!searchBar); } }
-        >
-          <img src={ searchIcon } alt="search icon" />
-        </button>
+        { hasSearch && renderSearchButton() }
       </header>
-      { searchBar && <SearchBar /> }
+      { searchBar && <SearchBar pageName={ pageName } /> }
     </>
   );
 }

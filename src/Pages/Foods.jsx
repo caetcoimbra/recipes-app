@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import Header from '../Components/Header';
-import Footer from '../Components/Footer';
+import RecipeContext from '../Context/RecipeContext';
 
 function Foods() {
+  const { setSearchBtn } = useContext(RecipeContext);
+  useEffect(() => {
+    setSearchBtn(true);
+  });
   return (
-    <div>
-      <Header>Foods</Header>
-      <Footer />
-    </div>
+    <Header pageName="Foods" />
   );
 }
 
