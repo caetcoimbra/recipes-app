@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
+import Header from '../Components/Header';
+import RecipeContext from '../Context/RecipeContext';
 
 function Foods() {
-  return <div>Foods</div>;
+  const { setSearchBtn } = useContext(RecipeContext);
+  useEffect(() => {
+    setSearchBtn(true);
+  });
+  return (
+    <Header pageName="Foods" />
+  );
 }
 
 export default Foods;
