@@ -1,4 +1,5 @@
 import React, { useEffect, useContext } from 'react';
+import Footer from '../Components/Footer';
 import Header from '../Components/Header';
 import RecipeContext from '../Context/RecipeContext';
 
@@ -8,7 +9,10 @@ function ExploreFoodNaton() {
     setSearchBtn(true);
   });
   return (
-    <Header pageName="Explore Nationalities" />
+    <>
+      <Header pageName="Explore Nationalities" />
+      <Footer />
+    </>
   );
 }
 

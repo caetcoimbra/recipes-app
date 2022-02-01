@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react';
+import Footer from '../Components/Footer';
 import Header from '../Components/Header';
 import RecipeContext from '../Context/RecipeContext';
 
@@ -8,7 +9,10 @@ function Foods() {
     setSearchBtn(true);
   });
   return (
-    <Header pageName="Foods" />
+    <>
+      <Header pageName="Foods" />
+      <Footer />
+    </>
   );
 }
 
