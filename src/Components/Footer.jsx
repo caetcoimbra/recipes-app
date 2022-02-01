@@ -1,8 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { drinkIcon } from '../images/drinkIcon.svg';
-import { exploreIcon } from '../images/exploreIcon.svg';
-import { mealIcon } from '../images/mealIcon.svg';
+import { useHistory } from 'react-router-dom';
+import drinkIcon from '../images/drinkIcon.svg';
+import exploreIcon from '../images/exploreIcon.svg';
+import mealIcon from '../images/mealIcon.svg';
 import '../Styles/style.css';
 
 /** Não botar nas seguintes telas:
@@ -14,66 +14,61 @@ import '../Styles/style.css';
  */
 
 function Footer() {
+  const history = useHistory();
+
   const drinkRedirect = () => {
-    const { history } = props;
     history.push('/drinks');
   };
 
   const mealRedirect = () => {
-    const { history } = props;
     history.push('/foods');
   };
 
   const exploreRedirect = () => {
-    const { history } = props;
     history.push('/explore');
   };
   return (
     <footer data-testid="footer" className="footer">
       <div>
-        <span data-testid="drinks-bottom-btn">
-          <object
-            role="button"
-            tabIndex={ 0 }
-            type="image/svg+xml"
-            data={ drinkIcon }
-            onClick={ drinkRedirect }
-            onKeyPress={ drinkRedirect }
-          >
-            Drink
-          </object>
+        <span
+          id="drinkBtn"
+          data-testid="drinks-bottom-btn"
+          src={ drinkIcon }
+          role="button"
+          tabIndex={ 0 }
+          type="image/svg+xml"
+          onClick={ drinkRedirect }
+          onKeyPress={ drinkRedirect }
+        >
+          <img src={ drinkIcon } alt="Drink Icon" />
         </span>
-        <span data-testid="explore-bottom-btn">
-          <object
-            type="image/svg+xml"
-            data={ exploreIcon }
-            role="button"
-            tabIndex={ 0 }
-            onClick={ exploreRedirect }
-            onKeyPress={ exploreRedirect }
-          >
-            Explore
-          </object>
+        <span
+          id="exploreBtn"
+          data-testid="explore-bottom-btn"
+          src={ exploreIcon }
+          type="image/svg+xml"
+          role="button"
+          tabIndex={ 0 }
+          onClick={ exploreRedirect }
+          onKeyPress={ exploreRedirect }
+        >
+          <img src={ exploreIcon } alt="Explore Icon" />
         </span>
-        <span data-testid="food-bottom-btn">
-          <object
-            type="image/svg+xml"
-            data={ mealIcon }
-            role="button"
-            tabIndex={ 0 }
-            onClick={ mealRedirect }
-            onKeyPress={ mealRedirect }
-          >
-            Meal
-          </object>
+        <span
+          id="mealBtn"
+          data-testid="food-bottom-btn"
+          src={ mealIcon }
+          type="image/svg+xml"
+          role="button"
+          tabIndex={ 0 }
+          onClick={ mealRedirect }
+          onKeyPress={ mealRedirect }
+        >
+          <img src={ mealIcon } alt="Meal Icon" />
         </span>
       </div>
     </footer>
   );
 }
-
-Footer.propTypes = {
-  history: PropTypes.shape(PropTypes.object).isRequired,
-};
 
 export default Footer;
