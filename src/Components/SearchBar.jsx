@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import PropType from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import getRecipesByFilter from '../Services';
 import './SearchBar.css';
+import RecipeContext from '../Context/RecipeContext';
 
 function SearchBar(props) {
   const { pageName } = props;
+  const { setDrinksArray, setMealsArray } = useContext(RecipeContext);
   const [filter, setFilter] = useState('Ingredient');
   const [input, setInput] = useState('');
   const history = useHistory();
+  const TWELVE = 12;
 
   const validateInput = ({ value }) => {
     const error = 'Your search must have only 1 (one) character';
@@ -20,19 +23,27 @@ function SearchBar(props) {
 
   const handleClick = async () => {
     const recipes = await getRecipesByFilter(pageName, filter, input);
-    let searchType = 'meals';
-    let idType = 'idMeal';
-    let pageType = '/foods/';
-    if (pageName === 'Drinks') {
-      searchType = 'drinks';
-      idType = 'idDrink';
-      pageType = '/drinks/';
-    }
-    const size = recipes[searchType].length;
-    const idRecipe = recipes[searchType][0][idType];
-    console.log(recipes, searchType);
-    if (size === 1) {
-      history.push(`${pageType}${idRecipe}`);
+    const key = Object.keys(recipes);
+    if (recipes[key]) {
+      let searchType = 'meals';
+      let idType = 'idMeal';
+      let pageType = '/foods/';
+      if (pageName === 'Foods') {
+        setMealsArray(recipes[searchType].slice(0, TWELVE));
+      }
+      if (pageName === 'Drinks') {
+        searchType = 'drinks';
+        idType = 'idDrink';
+        pageType = '/drinks/';
+        if (recipes.drinks.length > TWELVE) {
+          setDrinksArray(recipes[searchType].slice(0, TWELVE));
+        }
+      }
+      const size = recipes[searchType].length;
+      const idRecipe = recipes[searchType][0][idType];
+      if (size === 1) {
+        history.push(`${pageType}${idRecipe}`);
+      }
     }
   };
 

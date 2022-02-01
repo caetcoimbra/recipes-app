@@ -25,7 +25,9 @@ function RecipeProvider(props) {
         searchBar,
         setSearchBar,
         mealsArray,
+        setMealsArray,
         drinksArray,
+        setDrinksArray,
       } }
     >
       {children}

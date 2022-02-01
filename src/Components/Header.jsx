@@ -12,7 +12,6 @@ function Header(props) {
   const history = useHistory();
   const context = useContext(RecipeContext);
   const { searchBar, setSearchBar, hasSearch } = context;
-  console.log(context);
 
   function renderSearchButton() {
     return (

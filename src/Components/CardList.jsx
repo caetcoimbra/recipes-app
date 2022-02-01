@@ -7,7 +7,6 @@ import RecipeCard from './RecipeCard';
 function CardList() {
   const { drinksArray, mealsArray } = useContext(RecipeContext);
   const { pathname } = useLocation();
-  console.log(drinksArray);
 
   function renderList() {
     if (pathname === '/foods') {
