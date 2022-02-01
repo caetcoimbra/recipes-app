@@ -14,7 +14,7 @@ function CardList() {
         <div>
           {mealsArray.map((meal, i) => (
             <RecipeCard
-              key={ i + 1 }
+              key={ i }
               recipeCardId={ `${i}-recipe-card` }
               cardImgId={ `${i}-card-img` }
               imgSrc={ meal.strMealThumb }
