@@ -1,0 +1,19 @@
+.recipe-photo {
+  width: 360px;
+}
+
+.recomended-conteiner {
+  display: flex;
+  overflow-y: auto;
+}
+
+.recomendedImg {
+  width: 180px;
+}
+
+.start-button {
+  background-color: green;
+  bottom: 0px;
+  position: fixed;
+  width: 360px;
+}
