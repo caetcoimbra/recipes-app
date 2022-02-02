@@ -1,16 +1,16 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropType from 'prop-types';
 import RecomendedCard from './RecomendedCard';
 import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import fetchDetailsApi from '../Services/detailsApi';
-import RecipeContext from '../Context/RecipeContext';
+import useDrinks from '../Hooks/useDrinks';
 import './DetailsPage.css';
 
 function FoodDetails({ match: { params: { id } } }) {
-  const { drinksArray } = useContext(RecipeContext);
+  const fetchDrinks = useDrinks();
   const recomendedNumber = 6;
-  const recomendedDrinks = drinksArray.slice(0, recomendedNumber);
+  const recomendedDrinks = fetchDrinks.slice(0, recomendedNumber);
   const [recipe, setRecipe] = useState({});
   const ingredientsKeys = [];
   const measurmentKey = [];
@@ -49,6 +49,7 @@ function FoodDetails({ match: { params: { id } } }) {
   }
 
   function renderRecomendation() {
+    console.log(fetchDrinks);
     return (
       recomendedDrinks.map((drink, index) => (
         <RecomendedCard

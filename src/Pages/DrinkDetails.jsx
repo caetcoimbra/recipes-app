@@ -1,16 +1,16 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropType from 'prop-types';
 import RecomendedCard from './RecomendedCard';
 import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import fetchDetailsApi from '../Services/detailsApi';
-import RecipeContext from '../Context/RecipeContext';
+import useFoods from '../Hooks/useFoods';
 import './DetailsPage.css';
 
 function DrinkDetails({ match: { params: { id } } }) {
-  const { mealsArray } = useContext(RecipeContext);
+  const fetchFoods = useFoods();
   const recomendedNumber = 6;
-  const recomendedMeals = mealsArray.slice(0, recomendedNumber);
+  const recomendedMeals = fetchFoods.slice(0, recomendedNumber);
   const [recipe, setRecipe] = useState({});
   const ingredientsKeys = [];
   const measurmentKey = [];

@@ -9,6 +9,7 @@ const useDrinks = () => {
       .then((response) => response.json())
       .then(({ drinks }) => setDrinkData(drinks.slice(0, TWELVE)));
   }, []);
+  console.log(drinkData);
   return drinkData;
 };
 export default useDrinks;
