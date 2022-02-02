@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 // import PropTypes from 'prop-types';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import RecipeContext from '../Context/RecipeContext';
 import RecipeCard from './RecipeCard';
 import useDrinks from '../Hooks/useDrinks';
@@ -27,15 +27,19 @@ function CardList() {
       return (
         <div>
           {mealsArray.map((meal, i) => (
-            <RecipeCard
+            <Link
+              to={ `/foods/${meal.idMeal}` }
               key={ i }
-              recipeCardId={ `${i}-recipe-card` }
-              cardClass="recipe__card"
-              cardImgId={ `${i}-card-img` }
-              imgSrc={ meal.strMealThumb }
-              imgStr={ meal.strMeal }
-              cardName={ `${i}-card-name` }
-            />
+            >
+              <RecipeCard
+                recipeCardId={ `${i}-recipe-card` }
+                cardClass="recipe__card"
+                cardImgId={ `${i}-card-img` }
+                imgSrc={ meal.strMealThumb }
+                imgStr={ meal.strMeal }
+                cardName={ `${i}-card-name` }
+              />
+            </Link>
           ))}
         </div>
       );
@@ -45,15 +49,19 @@ function CardList() {
       return (
         <div>
           {drinksArray.map((drink, i) => (
-            <RecipeCard
+            <Link
+              to={ `/drinks/${drink.idDrink}` }
               key={ i }
-              recipeCardId={ `${i}-recipe-card` }
-              cardClass="recipe__card"
-              cardImgId={ `${i}-card-img` }
-              imgSrc={ drink.strDrinkThumb }
-              imgStr={ drink.strDrink }
-              cardName={ `${i}-card-name` }
-            />
+            >
+              <RecipeCard
+                recipeCardId={ `${i}-recipe-card` }
+                cardClass="recipe__card"
+                cardImgId={ `${i}-card-img` }
+                imgSrc={ drink.strDrinkThumb }
+                imgStr={ drink.strDrink }
+                cardName={ `${i}-card-name` }
+              />
+            </Link>
           ))}
         </div>
       );

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import RecipeContext from '../Context/RecipeContext';
 import RecipeCard from './RecipeCard';
 
@@ -27,14 +27,18 @@ function Filtered() {
       return (
         <div>
           {filtered.map((meal, index) => (
-            <RecipeCard
+            <Link
+              to={ `/foods/${meal.idMeal}` }
               key={ index }
-              recipeCardId={ `${index}-recipe-card` }
-              cardImgId={ `${index}-card-img` }
-              imgSrc={ meal.strMealThumb }
-              imgStr={ meal.strMeal }
-              cardName={ `${index}-card-name` }
-            />
+            >
+              <RecipeCard
+                recipeCardId={ `${index}-recipe-card` }
+                cardImgId={ `${index}-card-img` }
+                imgSrc={ meal.strMealThumb }
+                imgStr={ meal.strMeal }
+                cardName={ `${index}-card-name` }
+              />
+            </Link>
           ))}
         </div>
       );
@@ -43,14 +47,18 @@ function Filtered() {
       return (
         <div>
           {filtered.map((drink, index) => (
-            <RecipeCard
+            <Link
+              to={ `/drinks/${drink.idDrink}` }
               key={ index }
-              recipeCardId={ `${index}-recipe-card` }
-              cardImgId={ `${index}-card-img` }
-              imgSrc={ drink.strDrinkThumb }
-              imgStr={ drink.strDrink }
-              cardName={ `${index}-card-name` }
-            />
+            >
+              <RecipeCard
+                recipeCardId={ `${index}-recipe-card` }
+                cardImgId={ `${index}-card-img` }
+                imgSrc={ drink.strDrinkThumb }
+                imgStr={ drink.strDrink }
+                cardName={ `${index}-card-name` }
+              />
+            </Link>
           ))}
         </div>
       );
