@@ -17,6 +17,7 @@ function RecipeProvider(props) {
   const [drinksArray, setDrinksArray] = useState([]);
   const [foodCategoriesArray, setFoodCategoriesArray] = useState([]);
   const [drinkCategoriesArray, setDrinkCategoriesArray] = useState([]);
+  const [filter, setFilter] = useState('');
   const { children } = props;
 
   useEffect(() => {
@@ -39,6 +40,8 @@ function RecipeProvider(props) {
         setDrinksArray,
         foodCategoriesArray,
         drinkCategoriesArray,
+        filter,
+        setFilter,
       } }
     >
       {children}

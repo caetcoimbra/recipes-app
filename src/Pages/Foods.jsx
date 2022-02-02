@@ -4,6 +4,7 @@ import CategoryButtons from '../Components/CategoryButtons';
 import Footer from '../Components/Footer';
 import Header from '../Components/Header';
 import RecipeContext from '../Context/RecipeContext';
+import Filtered from '../Components/Filtered';
 
 function Foods() {
   const { setSearchBtn } = useContext(RecipeContext);
@@ -16,6 +17,7 @@ function Foods() {
       <Header pageName="Foods" />
       <CategoryButtons />
       <CardList />
+      <Filtered />
       <Footer />
     </div>
   );

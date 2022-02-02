@@ -4,8 +4,18 @@ import Button from './Button';
 import RecipeContext from '../Context/RecipeContext';
 
 function CategoryButtons() {
-  const { foodCategoriesArray, drinkCategoriesArray } = useContext(RecipeContext);
+  const {
+    foodCategoriesArray,
+    drinkCategoriesArray,
+    setFilter,
+  } = useContext(RecipeContext);
+
   const { pathname } = useLocation();
+
+  const submitFilter = ({ target }) => {
+    const { textContent } = target;
+    setFilter(textContent);
+  };
 
   function generateCategoriesButtons() {
     if (pathname === '/foods') {
@@ -15,7 +25,7 @@ function CategoryButtons() {
             <Button
               key={ index }
               btnType="button"
-              btnMethod={ () => {} }
+              btnMethod={ submitFilter }
               btnTestId={ `${meal.strCategory}-category-filter` }
               btnText={ meal.strCategory }
               btnDisabled={ false }
@@ -31,7 +41,7 @@ function CategoryButtons() {
             <Button
               key={ index }
               btnType="button"
-              btnMethod={ () => {} }
+              btnMethod={ submitFilter }
               btnTestId={ `${drink.strCategory}-category-filter` }
               btnText={ drink.strCategory }
               btnDisabled={ false }

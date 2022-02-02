@@ -5,11 +5,11 @@ import RecipeContext from '../Context/RecipeContext';
 import RecipeCard from './RecipeCard';
 
 function CardList() {
-  const { drinksArray, mealsArray } = useContext(RecipeContext);
+  const { drinksArray, mealsArray, filter } = useContext(RecipeContext);
   const { pathname } = useLocation();
 
   function renderList() {
-    if (pathname === '/foods') {
+    if (pathname === '/foods' && filter === '') {
       return (
         <div>
           {mealsArray.map((meal, i) => (
@@ -25,6 +25,7 @@ function CardList() {
         </div>
       );
     }
+
     if (pathname === '/drinks') {
       return (
         <div>
