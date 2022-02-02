@@ -7,7 +7,7 @@ import RecipeContext from '../Context/RecipeContext';
 import Filtered from '../Components/Filtered';
 
 function Foods() {
-  const { setSearchBtn } = useContext(RecipeContext);
+  const { setSearchBtn, filter } = useContext(RecipeContext);
   useEffect(() => {
     setSearchBtn(true);
   });
@@ -16,8 +16,7 @@ function Foods() {
     <div>
       <Header pageName="Foods" />
       <CategoryButtons />
-      <CardList />
-      <Filtered />
+      {filter === '' ? (<CardList />) : (<Filtered />)}
       <Footer />
     </div>
   );

@@ -1,31 +1,65 @@
 import React, { useEffect, useState, useContext } from 'react';
+import { useLocation } from 'react-router-dom';
 import RecipeContext from '../Context/RecipeContext';
 import RecipeCard from './RecipeCard';
 
 function Filtered() {
-  const [filteredMeals, setFilteredMeals] = useState([]);
+  const [filtered, setFiltered] = useState([]);
   const { filter } = useContext(RecipeContext);
+  const { pathname } = useLocation();
   useEffect(() => {
-    if (filter !== '') {
+    if (filter !== '' && pathname === '/foods') {
       const TWELVE = 12;
       fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${filter}`)
         .then((response) => response.json())
-        .then(({ meals }) => setFilteredMeals(meals.splice(0, TWELVE)));
+        .then(({ meals }) => setFiltered(meals.slice(0, TWELVE)));
     }
-  }, [filter]);
+    if (filter !== '' && pathname === '/drinks') {
+      const TWELVE = 12;
+      fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${filter}`)
+        .then((response) => response.json())
+        .then(({ drinks }) => setFiltered(drinks.slice(0, TWELVE)));
+    }
+  }, [filter, pathname]);
+
+  const renderFiltered = () => {
+    if (pathname === '/foods') {
+      return (
+        <div>
+          {filtered.map((meal, index) => (
+            <RecipeCard
+              key={ index }
+              recipeCardId={ `${index}-recipe-card` }
+              cardImgId={ `${index}-card-img` }
+              imgSrc={ meal.strMealThumb }
+              imgStr={ meal.strMeal }
+              cardName={ `${index}-card-name` }
+            />
+          ))}
+        </div>
+      );
+    }
+    if (pathname === '/drinks') {
+      return (
+        <div>
+          {filtered.map((drink, index) => (
+            <RecipeCard
+              key={ index }
+              recipeCardId={ `${index}-recipe-card` }
+              cardImgId={ `${index}-card-img` }
+              imgSrc={ drink.strDrinkThumb }
+              imgStr={ drink.strDrink }
+              cardName={ `${index}-card-name` }
+            />
+          ))}
+        </div>
+      );
+    }
+  };
 
   return (
     <div>
-      {filteredMeals.map((meal, i) => (
-        <RecipeCard
-          key={ i }
-          recipeCardId={ `${i}-recipe-card` }
-          cardImgId={ `${i}-card-img` }
-          imgSrc={ meal.strMealThumb }
-          imgStr={ meal.strMeal }
-          cardName={ `${i}-card-name` }
-        />
-      ))}
+      {renderFiltered()}
     </div>
   );
 }

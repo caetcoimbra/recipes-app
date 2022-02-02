@@ -1,14 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import PropType from 'prop-types';
 import RecipeContext from '../Context/RecipeContext';
-import useDrinks from '../Hooks/useDrinks';
-import useFoods from '../Hooks/useFoods';
 import useFoodCategories from '../Hooks/useFoodCategories';
 import useDrinkCategories from '../Hooks/useDrinkCategories';
 
 function RecipeProvider(props) {
-  const fetchedDrinks = useDrinks();
-  const fetchedFoods = useFoods();
   const fetchFoodCategories = useFoodCategories();
   const fetchDrinkCategories = useDrinkCategories();
   const [hasSearch, setSearchBtn] = useState(true);
@@ -19,13 +15,6 @@ function RecipeProvider(props) {
   const [drinkCategoriesArray, setDrinkCategoriesArray] = useState([]);
   const [filter, setFilter] = useState('');
   const { children } = props;
-
-  useEffect(() => {
-    setMealsArray(fetchedFoods);
-    setDrinksArray(fetchedDrinks);
-    setFoodCategoriesArray(fetchFoodCategories);
-    setDrinkCategoriesArray(fetchDrinkCategories);
-  }, [fetchedDrinks, fetchedFoods, fetchFoodCategories, fetchDrinkCategories]);
 
   return (
     <RecipeContext.Provider
@@ -40,6 +29,10 @@ function RecipeProvider(props) {
         setDrinksArray,
         foodCategoriesArray,
         drinkCategoriesArray,
+        setFoodCategoriesArray,
+        setDrinkCategoriesArray,
+        fetchDrinkCategories,
+        fetchFoodCategories,
         filter,
         setFilter,
       } }

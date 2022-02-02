@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useRef, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Button from './Button';
 import RecipeContext from '../Context/RecipeContext';
@@ -8,13 +8,37 @@ function CategoryButtons() {
     foodCategoriesArray,
     drinkCategoriesArray,
     setFilter,
+    filter,
+    fetchDrinkCategories,
+    fetchFoodCategories,
+    setDrinkCategoriesArray,
+    setFoodCategoriesArray,
   } = useContext(RecipeContext);
+
+  const previousFilter = useRef('');
+
+  useEffect(() => {
+    previousFilter.current = filter;
+  }, [filter]);
+
+  useEffect(() => {
+    setFoodCategoriesArray(fetchFoodCategories);
+    setDrinkCategoriesArray(fetchDrinkCategories);
+  }, [
+    fetchFoodCategories,
+    fetchDrinkCategories,
+    setDrinkCategoriesArray,
+    setFoodCategoriesArray,
+  ]);
 
   const { pathname } = useLocation();
 
   const submitFilter = ({ target }) => {
     const { textContent } = target;
     setFilter(textContent);
+    if (textContent === previousFilter.current) {
+      setFilter('');
+    }
   };
 
   function generateCategoriesButtons() {
@@ -24,7 +48,6 @@ function CategoryButtons() {
           {foodCategoriesArray.map((meal, index) => (
             <Button
               key={ index }
-              btnType="button"
               btnMethod={ submitFilter }
               btnTestId={ `${meal.strCategory}-category-filter` }
               btnText={ meal.strCategory }
@@ -40,7 +63,6 @@ function CategoryButtons() {
           {drinkCategoriesArray.map((drink, index) => (
             <Button
               key={ index }
-              btnType="button"
               btnMethod={ submitFilter }
               btnTestId={ `${drink.strCategory}-category-filter` }
               btnText={ drink.strCategory }

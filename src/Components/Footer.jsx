@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
+import RecipeContext from '../Context/RecipeContext';
 import drinkIcon from '../images/drinkIcon.svg';
 import exploreIcon from '../images/exploreIcon.svg';
 import mealIcon from '../images/mealIcon.svg';
@@ -15,13 +16,16 @@ import '../Styles/style.css';
 
 function Footer() {
   const history = useHistory();
+  const { setFilter } = useContext(RecipeContext);
 
   const drinkRedirect = () => {
     history.push('/drinks');
+    setFilter('');
   };
 
   const mealRedirect = () => {
     history.push('/foods');
+    setFilter('');
   };
 
   const exploreRedirect = () => {
