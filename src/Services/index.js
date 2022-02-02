@@ -25,6 +25,7 @@ const getRecipesByFilter = async (type, filter, input) => {
     const response = await fetch(`${urlFilter}${choosenFilter}`);
     const responseJson = await response.json();
     const key = Object.keys(responseJson);
+    console.log(key);
     if (!responseJson[key]) {
       global.alert(errorMessage);
     }
