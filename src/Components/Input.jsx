@@ -8,10 +8,12 @@ function Input({
   inputValue,
   inputMethod,
   inputName,
+  inputClass,
 }) {
   return (
     <input
       data-testid={ inputTestId }
+      className={ inputClass }
       type={ inputType }
       name={ inputName }
       placeholder={ inputPlaceHolder }
@@ -24,11 +26,13 @@ function Input({
 Input.defaultProps = {
   inputPlaceHolder: '',
   inputValue: '',
+  inputClass: '',
 };
 
 Input.propTypes = {
   inputTestId: PropTypes.string.isRequired,
   inputType: PropTypes.string.isRequired,
+  inputClass: PropTypes.string,
   inputName: PropTypes.string.isRequired,
   inputPlaceHolder: PropTypes.string,
   inputValue: PropTypes.string,
