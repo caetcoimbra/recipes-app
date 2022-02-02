@@ -7,7 +7,7 @@ const useFoodCategories = () => {
   useEffect(() => {
     fetch(foodURL)
       .then((response) => response.json())
-      .then(({ meals }) => setFoodCategories(meals.splice(0, FIVE)));
+      .then(({ meals }) => setFoodCategories(meals.slice(0, FIVE)));
   }, []);
   return foodCategories;
 };

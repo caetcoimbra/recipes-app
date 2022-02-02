@@ -3,19 +3,7 @@ html, body {
   padding: 0;
 }
 
-body {
-  box-sizing: border-box;
-  width: 360px;
-  height: 640px;
-  max-width: 360px;
-  max-height: 640px;
-}
-
 .footer {
   bottom: 0;
   position: fixed;
-}
-
-.recipe__card > img {
-  width: 100%;
 }

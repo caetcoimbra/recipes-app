@@ -10,8 +10,7 @@ import RecipeContext from '../Context/RecipeContext';
 function Header(props) {
   const { pageName } = props;
   const history = useHistory();
-  const context = useContext(RecipeContext);
-  const { searchBar, setSearchBar, hasSearch } = context;
+  const { searchBar, setSearchBar, hasSearch } = useContext(RecipeContext);
 
   function renderSearchButton() {
     return (

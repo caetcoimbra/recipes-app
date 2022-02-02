@@ -54,6 +54,11 @@ function CategoryButtons() {
               btnDisabled={ false }
             />
           ))}
+          <Button
+            btnMethod={ () => setFilter('') }
+            btnTestId="All-category-filter"
+            btnText="All"
+          />
         </div>
       );
     }
@@ -69,6 +74,11 @@ function CategoryButtons() {
               btnDisabled={ false }
             />
           ))}
+          <Button
+            btnMethod={ () => setFilter('') }
+            btnTestId="All-category-filter"
+            btnText="All"
+          />
         </div>
       );
     }

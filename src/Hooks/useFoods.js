@@ -7,7 +7,7 @@ const useFoods = () => {
   useEffect(() => {
     fetch(foodUrl)
       .then((response) => response.json())
-      .then(({ meals }) => setFoodData(meals.splice(0, TWELVE)));
+      .then(({ meals }) => setFoodData(meals.slice(0, TWELVE)));
   }, []);
   return foodData;
 };

@@ -7,7 +7,7 @@ const useDrinkCategories = () => {
   useEffect(() => {
     fetch(drinkURL)
       .then((response) => response.json())
-      .then(({ drinks }) => setDrinkCategories(drinks.splice(0, FIVE)));
+      .then(({ drinks }) => setDrinkCategories(drinks.slice(0, FIVE)));
   }, []);
   return drinkCategories;
 };
