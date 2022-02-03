@@ -32,6 +32,8 @@ function DrinkInProgress({
     });
     return ingredientsKeys.map((ingredient, index) => (
       <li key={ index } data-testid={ `${index}-ingredient-step` }>
+        <input type="checkbox" />
+        {' '}
         {`${recipe[ingredient]} ${recipe[measurmentKey[index]]}`}
       </li>
     ));
@@ -71,7 +73,6 @@ function DrinkInProgress({
       <button type="button" data-testid="finish-recipe-btn">
         Finalizar
       </button>
-      { console.log(recipe) }
     </div>
   );
 }

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import PropType from 'prop-types';
 import fetchDetailsApi from '../Services/detailsApi';
+import shareIcon from '../images/shareIcon.svg';
+import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 
 function FoodInProgress({
   match: {
@@ -30,6 +32,7 @@ function FoodInProgress({
     });
     return ingredientsKeys.map((ingredient, index) => (
       <li key={ index } data-testid={ `${index}-ingredient-step` }>
+        <input type="checkbox" />
         {`${recipe[ingredient]} ${recipe[measurmentKey[index]]}`}
       </li>
     ));
