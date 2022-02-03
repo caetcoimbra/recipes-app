@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropType from 'prop-types';
+import { useHistory } from 'react-router-dom';
 import fetchDetailsApi from '../Services/detailsApi';
 import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
@@ -9,6 +10,10 @@ function FoodInProgress({
     params: { id },
   },
 }) {
+  const history = useHistory();
+  const redirect = () => {
+    history.push('/done-recipes');
+  };
   const [recipe, setRecipe] = useState({});
   const ingredientsKeys = [];
   const measurmentKey = [];
@@ -69,7 +74,12 @@ function FoodInProgress({
         </ul>
         <div data-testid="instructions">{recipe.strInstructions}</div>
       </section>
-      <button type="button" data-testid="finish-recipe-btn">
+      <button
+        type="button"
+        data-testid="finish-recipe-btn"
+        value="Finalizar"
+        onClick={ redirect }
+      >
         Finalizar
       </button>
     </div>
