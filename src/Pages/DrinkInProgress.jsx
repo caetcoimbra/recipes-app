@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import PropType from 'prop-types';
 import fetchDetailsApi from '../Services/detailsApi';
+import shareIcon from '../images/shareIcon.svg';
+import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 
 function DrinkInProgress({
   match: {
@@ -48,13 +50,13 @@ function DrinkInProgress({
         <input
           data-testid="share-btn"
           type="image"
-          // src={ shareIcon }
+          src={ shareIcon }
           alt="share button"
         />
         <input
           data-testid="favorite-btn"
           type="image"
-          // src={ whiteHeartIcon }
+          src={ whiteHeartIcon }
           alt="fav button"
         />
       </section>

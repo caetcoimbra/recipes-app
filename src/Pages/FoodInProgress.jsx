@@ -48,13 +48,13 @@ function FoodInProgress({
         <input
           data-testid="share-btn"
           type="image"
-          // src={ shareIcon }
+          src={ shareIcon }
           alt="share button"
         />
         <input
           data-testid="favorite-btn"
           type="image"
-          // src={ whiteHeartIcon }
+          src={ whiteHeartIcon }
           alt="fav button"
         />
       </section>
