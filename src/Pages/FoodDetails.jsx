@@ -16,6 +16,7 @@ function FoodDetails({ match: { params: { id } } }) {
   const [recipe, setRecipe] = useState({});
   const [changeHeart, setHeart] = useState();
   const [favList, setFav] = useState();
+  const [copiedAlert, setAlert] = useState(false);
   const ingredientsKeys = [];
   const measurmentKey = [];
 
@@ -66,8 +67,19 @@ function FoodDetails({ match: { params: { id } } }) {
     );
   }
 
+  function renderCopyMsg() {
+    return (
+      <div>
+        Link copied!
+      </div>
+    );
+  }
+
   function handleShareClick() {
-    console.log('url');
+    const TIMEOUT = 1000;
+    navigator.clipboard.writeText(window.location.href);
+    setAlert(true);
+    setTimeout(() => { setAlert(false); }, TIMEOUT);
   }
 
   useEffect(() => {
@@ -136,6 +148,7 @@ function FoodDetails({ match: { params: { id } } }) {
           alt="fav button"
           onClick={ handleFavoriteClick }
         />
+        { copiedAlert && renderCopyMsg() }
       </section>
       <section>
         <span data-testid="recipe-category">{ recipe.strCategory }</span>
@@ -158,7 +171,7 @@ function FoodDetails({ match: { params: { id } } }) {
       <section className="recomended-conteiner">
         { renderRecomendation() }
       </section>
-      <StartRecipeButton recipe={ recipe } />
+      <StartRecipeButton recipe={ recipe } idType="idMeal" />
     </>
   );
 }

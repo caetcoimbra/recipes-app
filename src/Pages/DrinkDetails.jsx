@@ -16,6 +16,7 @@ function DrinkDetails({ match: { params: { id } } }) {
   const [recipe, setRecipe] = useState({});
   const [changeHeart, setHeart] = useState();
   const [favList, setFav] = useState();
+  const [copiedAlert, setAlert] = useState(false);
   const ingredientsKeys = [];
   const measurmentKey = [];
 
@@ -64,6 +65,21 @@ function DrinkDetails({ match: { params: { id } } }) {
         />
       ))
     );
+  }
+
+  function renderCopyMsg() {
+    return (
+      <div>
+        Link copied!
+      </div>
+    );
+  }
+
+  function handleShareClick() {
+    const TIMEOUT = 1000;
+    navigator.clipboard.writeText(window.location.href);
+    setAlert(true);
+    setTimeout(() => { setAlert(false); }, TIMEOUT);
   }
 
   useEffect(() => {
@@ -121,6 +137,7 @@ function DrinkDetails({ match: { params: { id } } }) {
           type="image"
           src={ shareIcon }
           alt="share button"
+          onClick={ handleShareClick }
         />
         <input
           data-testid="favorite-btn"
@@ -129,6 +146,7 @@ function DrinkDetails({ match: { params: { id } } }) {
           alt="fav button"
           onClick={ handleFavoriteClick }
         />
+        { copiedAlert && renderCopyMsg() }
       </section>
       <section>
         <span data-testid="recipe-category">
@@ -145,7 +163,7 @@ function DrinkDetails({ match: { params: { id } } }) {
       <section className="recomended-conteiner">
         { renderRecomendation() }
       </section>
-      <StartRecipeButton />
+      <StartRecipeButton recipe={ recipe } idType="idDrink" />
     </>
   );
 }
