@@ -5,7 +5,7 @@ import StartRecipeButton from '../Components/StartRecipeButton';
 import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
-import fetchDetailsApi from '../Services/detailsApi';
+import fetchDrinkDetails from '../Services/drinkDetailsApi';
 import useFoods from '../Hooks/useFoods';
 import './DetailsPage.css';
 
@@ -22,7 +22,7 @@ function DrinkDetails({ match: { params: { id } } }) {
 
   useEffect(() => {
     function fetchRecipe() {
-      fetchDetailsApi(id, 'drink').then((response) => {
+      fetchDrinkDetails(id).then((response) => {
         setRecipe(...response.drinks);
       });
     }
