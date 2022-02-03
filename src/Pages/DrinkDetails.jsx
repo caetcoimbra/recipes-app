@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import PropType from 'prop-types';
 import RecomendedCard from './RecomendedCard';
+import StartRecipeButton from '../Components/StartRecipeButton';
 import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
-import fetchDetailsApi from '../Services/detailsApi';
+import blackHeartIcon from '../images/blackHeartIcon.svg';
+import fetchDrinkDetails from '../Services/drinkDetailsApi';
 import useFoods from '../Hooks/useFoods';
 import './DetailsPage.css';
 
@@ -12,12 +14,15 @@ function DrinkDetails({ match: { params: { id } } }) {
   const recomendedNumber = 6;
   const recomendedMeals = fetchFoods.slice(0, recomendedNumber);
   const [recipe, setRecipe] = useState({});
+  const [changeHeart, setHeart] = useState();
+  const [favList, setFav] = useState();
+  const [copiedAlert, setAlert] = useState(false);
   const ingredientsKeys = [];
   const measurmentKey = [];
 
   useEffect(() => {
     function fetchRecipe() {
-      fetchDetailsApi(id, 'drink').then((response) => {
+      fetchDrinkDetails(id).then((response) => {
         setRecipe(...response.drinks);
       });
     }
@@ -62,9 +67,63 @@ function DrinkDetails({ match: { params: { id } } }) {
     );
   }
 
+  function renderCopyMsg() {
+    return (
+      <div>
+        Link copied!
+      </div>
+    );
+  }
+
+  function handleShareClick() {
+    const TIMEOUT = 1000;
+    navigator.clipboard.writeText(window.location.href);
+    setAlert(true);
+    setTimeout(() => { setAlert(false); }, TIMEOUT);
+  }
+
+  useEffect(() => {
+    function checkFavoriteLS() {
+      let favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
+      if (!favoriteRecipes) {
+        favoriteRecipes = [];
+      }
+      return ({
+        checkFavorite: favoriteRecipes.some((element) => element.id === recipe.idDrink),
+        favoriteRecipes,
+      });
+    }
+    const { favoriteRecipes, checkFavorite } = checkFavoriteLS();
+    setHeart(checkFavorite);
+    setFav(favoriteRecipes);
+  }, [recipe.idDrink]);
+
+  function handleFavoriteClick() {
+    const currentRecipe = {
+      id: recipe.idDrink,
+      type: 'drink',
+      nationality: '',
+      category: recipe.strCategory,
+      alcoholicOrNot: recipe.strAlcoholic,
+      name: recipe.strDrink,
+      image: recipe.strDrinkThumb,
+    };
+
+    if (changeHeart) {
+      const indexFav = favList.findIndex((element) => (
+        element.id === currentRecipe.id));
+      favList.splice(indexFav, 1);
+      localStorage.setItem('favoriteRecipes', JSON.stringify(favList));
+      setHeart(false);
+    } else {
+      favList.push(currentRecipe);
+      localStorage.setItem('favoriteRecipes', JSON.stringify(favList));
+      setHeart(true);
+    }
+  }
+
   return (
     <>
-      <div>Drinks Details</div>
       <img
         src={ recipe.strDrinkThumb }
         alt="drink"
@@ -78,13 +137,16 @@ function DrinkDetails({ match: { params: { id } } }) {
           type="image"
           src={ shareIcon }
           alt="share button"
+          onClick={ handleShareClick }
         />
         <input
           data-testid="favorite-btn"
           type="image"
-          src={ whiteHeartIcon }
+          src={ changeHeart ? blackHeartIcon : whiteHeartIcon }
           alt="fav button"
+          onClick={ handleFavoriteClick }
         />
+        { copiedAlert && renderCopyMsg() }
       </section>
       <section>
         <span data-testid="recipe-category">
@@ -101,13 +163,7 @@ function DrinkDetails({ match: { params: { id } } }) {
       <section className="recomended-conteiner">
         { renderRecomendation() }
       </section>
-      <button
-        type="button"
-        data-testid="start-recipe-btn"
-        className="start-button"
-      >
-        Start Recipe
-      </button>
+      <StartRecipeButton recipe={ recipe } idType="idDrink" />
     </>
   );
 }
