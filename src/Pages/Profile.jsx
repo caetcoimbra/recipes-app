@@ -24,7 +24,7 @@ function Profile() {
   return (
     <>
       <Header pageName="Profile" />
-      <div>
+      <section className="content">
         <span data-testid="profile-email">{email && email.email}</span>
         <button
           type="button"
@@ -47,7 +47,7 @@ function Profile() {
         >
           Logout
         </button>
-      </div>
+      </section>
       <Footer />
     </>
   );

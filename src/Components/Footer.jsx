@@ -5,6 +5,7 @@ import drinkIcon from '../images/drinkIcon.svg';
 import exploreIcon from '../images/exploreIcon.svg';
 import mealIcon from '../images/mealIcon.svg';
 import '../Styles/style.css';
+import './Footer.css';
 
 /** Não botar nas seguintes telas:
  * Login
@@ -33,44 +34,42 @@ function Footer() {
   };
   return (
     <footer data-testid="footer" className="footer">
-      <div>
-        <span
-          id="drinkBtn"
-          data-testid="drinks-bottom-btn"
-          src={ drinkIcon }
-          role="button"
-          tabIndex={ 0 }
-          type="image/svg+xml"
-          onClick={ drinkRedirect }
-          onKeyPress={ drinkRedirect }
-        >
-          <img src={ drinkIcon } alt="Drink Icon" />
-        </span>
-        <span
-          id="exploreBtn"
-          data-testid="explore-bottom-btn"
-          src={ exploreIcon }
-          type="image/svg+xml"
-          role="button"
-          tabIndex={ 0 }
-          onClick={ exploreRedirect }
-          onKeyPress={ exploreRedirect }
-        >
-          <img src={ exploreIcon } alt="Explore Icon" />
-        </span>
-        <span
-          id="mealBtn"
-          data-testid="food-bottom-btn"
-          src={ mealIcon }
-          type="image/svg+xml"
-          role="button"
-          tabIndex={ 0 }
-          onClick={ mealRedirect }
-          onKeyPress={ mealRedirect }
-        >
-          <img src={ mealIcon } alt="Meal Icon" />
-        </span>
-      </div>
+      <span
+        id="drinkBtn"
+        data-testid="drinks-bottom-btn"
+        src={ drinkIcon }
+        role="button"
+        tabIndex={ 0 }
+        type="image/svg+xml"
+        onClick={ drinkRedirect }
+        onKeyPress={ drinkRedirect }
+      >
+        <img src={ drinkIcon } alt="Drink Icon" className="drinkIcon" />
+      </span>
+      <span
+        id="exploreBtn"
+        data-testid="explore-bottom-btn"
+        src={ exploreIcon }
+        type="image/svg+xml"
+        role="button"
+        tabIndex={ 0 }
+        onClick={ exploreRedirect }
+        onKeyPress={ exploreRedirect }
+      >
+        <img src={ exploreIcon } alt="Explore Icon" className="exploreIcon" />
+      </span>
+      <span
+        id="mealBtn"
+        data-testid="food-bottom-btn"
+        src={ mealIcon }
+        type="image/svg+xml"
+        role="button"
+        tabIndex={ 0 }
+        onClick={ mealRedirect }
+        onKeyPress={ mealRedirect }
+      >
+        <img src={ mealIcon } alt="Meal Icon" className="foodIcon" />
+      </span>
     </footer>
   );
 }
