@@ -61,11 +61,9 @@ const objTest = {
 
 async function fetchFoodDetails(id) {
   const urlApi = `${urlFood}${id}`;
-  console.log(urlApi);
   try {
     const response = await fetch(urlApi);
     const responseJSON = await response.json();
-    console.log(responseJSON);
     return responseJSON;
   } catch (error) {
     console.log(error);
