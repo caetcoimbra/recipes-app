@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import PropType from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import fetchDrinkDetails from '../Services/drinkDetailsApi';
-import shareIcon from '../images/shareIcon.svg';
-import whiteHeartIcon from '../images/whiteHeartIcon.svg';
+import FavButton from '../Components/FavButton';
+import ShareButton from '../Components/ShareButton';
 
 function DrinkInProgress({
   match: {
@@ -14,6 +14,7 @@ function DrinkInProgress({
   const redirect = () => {
     history.push('/done-recipes');
   };
+  const urlShare = window.location.href;
   const [recipe, setRecipe] = useState({});
   const ingredientsKeys = [];
   const measurmentKey = [];
@@ -54,18 +55,8 @@ function DrinkInProgress({
       />
       <section>
         <span data-testid="recipe-title">{recipe.strDrink}</span>
-        <input
-          data-testid="share-btn"
-          type="image"
-          src={ shareIcon }
-          alt="share button"
-        />
-        <input
-          data-testid="favorite-btn"
-          type="image"
-          src={ whiteHeartIcon }
-          alt="fav button"
-        />
+        <ShareButton testId="share-btn" urlShare={ urlShare } />
+        <FavButton testId="favorite-btn" recipe={ recipe } />
       </section>
       <section>
         <span data-testid="recipe-category">{recipe.strCategory}</span>

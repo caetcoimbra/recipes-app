@@ -14,6 +14,9 @@ function ShareButton({ testId, urlShare }) {
   }
 
   function handleShareClick() {
+    const five = 5;
+    urlShare = urlShare.split('/').slice(0, five);
+    urlShare = urlShare.join('/');
     const TIMEOUT = 1000;
     navigator.clipboard.writeText(urlShare);
     setAlert(true);
