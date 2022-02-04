@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropType from 'prop-types';
 import { useHistory } from 'react-router-dom';
-import fetchDetailsApi from '../Services/detailsApi';
+import fetchFoodDetails from '../Services/foodDetailsApi';
 import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 
@@ -19,7 +19,7 @@ function FoodInProgress({
   const measurmentKey = [];
   useEffect(() => {
     function fetchRecipe() {
-      fetchDetailsApi(id, 'food').then((response) => {
+      fetchFoodDetails(id, 'food').then((response) => {
         setRecipe(...response.meals);
       });
     }
