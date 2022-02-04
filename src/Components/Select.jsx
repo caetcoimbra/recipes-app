@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 function Select({ optionsArray, slcTestId, slcName, slcValue, slcMethod }) {
   return (
-    <div>
+    <div className="content">
       <select
         data-testid={ slcTestId }
         name={ slcName }
