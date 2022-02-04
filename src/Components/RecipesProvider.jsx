@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropType from 'prop-types';
 import RecipeContext from '../Context/RecipeContext';
 import useFoodCategories from '../Hooks/useFoodCategories';
 import useDrinkCategories from '../Hooks/useDrinkCategories';
+import useFoods from '../Hooks/useFoods';
 
 function RecipeProvider(props) {
   const fetchFoodCategories = useFoodCategories();
@@ -15,8 +16,13 @@ function RecipeProvider(props) {
   const [drinkCategoriesArray, setDrinkCategoriesArray] = useState([]);
   const [favoriteList, setFavoriteList] = useState([]);
   const [pathname, setPathname] = useState('');
+  const fetchedFoods = useFoods();
   const [filter, setFilter] = useState('');
   const { children } = props;
+
+  useEffect(() => {
+    setMealsArray(fetchedFoods);
+  }, [fetchedFoods]);
 
   return (
     <RecipeContext.Provider

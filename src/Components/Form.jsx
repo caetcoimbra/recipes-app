@@ -1,15 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function Form({ formMethod, children }) {
+function Form({ formMethod, children, formClass }) {
   return (
-    <form onSubmit={ formMethod }>
+    <form className={ formClass } onSubmit={ formMethod }>
       { children }
     </form>
   );
 }
 
+Form.defaultProps = {
+  formClass: '',
+};
+
 Form.propTypes = {
+  formClass: PropTypes.string,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,

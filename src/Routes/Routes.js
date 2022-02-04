@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Explore from '../Pages/Explore';
-import Login from '../Pages/Login';
+import Login from '../Pages/Login/Login';
 import Foods from '../Pages/Foods';
 import Drinks from '../Pages/Drinks';
 import FoodDetails from '../Pages/FoodDetails';
@@ -16,6 +16,7 @@ import ExploreFoodNation from '../Pages/ExploreFoodNation';
 import Profile from '../Pages/Profile';
 import RecipeDone from '../Pages/RecipeDone';
 import FavRecipe from '../Pages/FavRecipe';
+import NotFound from '../Pages/NotFound';
 
 class Routes extends React.Component {
   render() {
@@ -49,6 +50,7 @@ class Routes extends React.Component {
         <Route exact path="/profile" component={ Profile } />
         <Route exact path="/done-recipes" component={ RecipeDone } />
         <Route exact path="/favorite-recipes" component={ FavRecipe } />
+        <Route exact path="/explore/drinks/nationalities" component={ NotFound } />
       </Switch>
     );
   }

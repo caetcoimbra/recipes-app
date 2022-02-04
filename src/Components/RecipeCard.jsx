@@ -12,13 +12,16 @@ function RecipeCard({ recipeCardId, cardImgId, imgSrc, imgStr, cardName, cardCla
 
 RecipeCard.defaultProps = {
   cardClass: '',
+  cardImgId: '',
+  imgStr: '',
+  imgSrc: '',
 };
 
 RecipeCard.propTypes = {
   cardClass: PropTypes.string,
-  cardImgId: PropTypes.string.isRequired,
-  imgSrc: PropTypes.string.isRequired,
-  imgStr: PropTypes.string.isRequired,
+  cardImgId: PropTypes.string,
+  imgSrc: PropTypes.string,
+  imgStr: PropTypes.string,
   recipeCardId: PropTypes.string.isRequired,
   cardName: PropTypes.string.isRequired,
 };

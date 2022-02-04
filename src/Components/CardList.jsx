@@ -4,23 +4,19 @@ import { Link, useLocation } from 'react-router-dom';
 import RecipeContext from '../Context/RecipeContext';
 import RecipeCard from './RecipeCard';
 import useDrinks from '../Hooks/useDrinks';
-import useFoods from '../Hooks/useFoods';
 
 function CardList() {
   const {
     drinksArray,
     mealsArray,
-    setMealsArray,
     setDrinksArray,
   } = useContext(RecipeContext);
-  const fetchedFoods = useFoods();
   const fetchedDrinks = useDrinks();
   const { pathname } = useLocation();
 
   useEffect(() => {
     setDrinksArray(fetchedDrinks);
-    setMealsArray(fetchedFoods);
-  }, [setDrinksArray, setMealsArray, fetchedDrinks, fetchedFoods]);
+  }, [setDrinksArray, fetchedDrinks]);
 
   function renderList() {
     if (pathname === '/foods') {
