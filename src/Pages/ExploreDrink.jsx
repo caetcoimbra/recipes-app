@@ -1,6 +1,8 @@
 import React, { useEffect, useContext } from 'react';
-import Footer from '../Components/Footer';
+import { Link } from 'react-router-dom';
 import Header from '../Components/Header';
+import SurpriseBtn from './SurpriseBtn';
+import Footer from '../Components/Footer';
 import RecipeContext from '../Context/RecipeContext';
 
 function ExploreDrink() {
@@ -11,6 +13,18 @@ function ExploreDrink() {
   return (
     <>
       <Header pageName="Explore Drinks" />
+      <div className="content">
+        <Link to="/explore/drinks/ingredients">
+          <button
+            data-testid="explore-by-ingredient"
+            type="button"
+          >
+            By Ingredient
+          </button>
+        </Link>
+        <SurpriseBtn type="drink" />
+      </div>
+      <Footer />
       <Footer />
     </>
   );
