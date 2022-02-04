@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react';
 import PropType from 'prop-types';
 import RecomendedCard from './RecomendedCard';
 import StartRecipeButton from '../Components/StartRecipeButton';
-import shareIcon from '../images/shareIcon.svg';
-import whiteHeartIcon from '../images/whiteHeartIcon.svg';
-import blackHeartIcon from '../images/blackHeartIcon.svg';
+import FavButton from '../Components/FavButton';
+import ShareButton from '../Components/ShareButton';
 import fetchFoodDetails from '../Services/foodDetailsApi';
 import useDrinks from '../Hooks/useDrinks';
 import './DetailsPage.css';
@@ -14,11 +13,9 @@ function FoodDetails({ match: { params: { id } } }) {
   const recomendedNumber = 6;
   const recomendedDrinks = fetchDrinks.slice(0, recomendedNumber);
   const [recipe, setRecipe] = useState({});
-  const [changeHeart, setHeart] = useState();
-  const [favList, setFav] = useState();
-  const [copiedAlert, setAlert] = useState(false);
   const ingredientsKeys = [];
   const measurmentKey = [];
+  const urlShare = window.location.href;
 
   useEffect(() => {
     function fetchRecipe() {
@@ -67,61 +64,6 @@ function FoodDetails({ match: { params: { id } } }) {
     );
   }
 
-  function renderCopyMsg() {
-    return (
-      <div>
-        Link copied!
-      </div>
-    );
-  }
-
-  function handleShareClick() {
-    const TIMEOUT = 1000;
-    navigator.clipboard.writeText(window.location.href);
-    setAlert(true);
-    setTimeout(() => { setAlert(false); }, TIMEOUT);
-  }
-
-  useEffect(() => {
-    function checkFavoriteLS() {
-      let favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
-      if (!favoriteRecipes) {
-        favoriteRecipes = [];
-      }
-      return ({
-        checkFavorite: favoriteRecipes.some((element) => element.id === recipe.idMeal),
-        favoriteRecipes,
-      });
-    }
-    const { favoriteRecipes, checkFavorite } = checkFavoriteLS();
-    setHeart(checkFavorite);
-    setFav(favoriteRecipes);
-  }, [recipe.idMeal]);
-
-  function handleFavoriteClick() {
-    const currentRecipe = {
-      id: recipe.idMeal,
-      type: 'food',
-      nationality: recipe.strArea,
-      category: recipe.strCategory,
-      alcoholicOrNot: '',
-      name: recipe.strMeal,
-      image: recipe.strMealThumb,
-    };
-
-    if (changeHeart) {
-      const indexFav = favList.findIndex((element) => (
-        element.id === currentRecipe.id));
-      favList.splice(indexFav, 1);
-      localStorage.setItem('favoriteRecipes', JSON.stringify(favList));
-      setHeart(false);
-    } else {
-      favList.push(currentRecipe);
-      localStorage.setItem('favoriteRecipes', JSON.stringify(favList));
-      setHeart(true);
-    }
-  }
-
   return (
     <>
       <img
@@ -134,21 +76,8 @@ function FoodDetails({ match: { params: { id } } }) {
         <span data-testid="recipe-title">
           { recipe.strMeal}
         </span>
-        <input
-          data-testid="share-btn"
-          type="image"
-          src={ shareIcon }
-          alt="share button"
-          onClick={ handleShareClick }
-        />
-        <input
-          data-testid="favorite-btn"
-          type="image"
-          src={ changeHeart ? blackHeartIcon : whiteHeartIcon }
-          alt="fav button"
-          onClick={ handleFavoriteClick }
-        />
-        { copiedAlert && renderCopyMsg() }
+        <ShareButton testid="share-btn" urlShare={ urlShare } />
+        <FavButton recipe={ recipe } testId="favorite-btn" />
       </section>
       <section>
         <span data-testid="recipe-category">{ recipe.strCategory }</span>

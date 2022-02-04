@@ -13,6 +13,8 @@ function RecipeProvider(props) {
   const [drinksArray, setDrinksArray] = useState([]);
   const [foodCategoriesArray, setFoodCategoriesArray] = useState([]);
   const [drinkCategoriesArray, setDrinkCategoriesArray] = useState([]);
+  const [favoriteList, setFavoriteList] = useState([]);
+  const [pathname, setPathname] = useState('');
   const [filter, setFilter] = useState('');
   const { children } = props;
 
@@ -35,6 +37,10 @@ function RecipeProvider(props) {
         fetchFoodCategories,
         filter,
         setFilter,
+        pathname,
+        setPathname,
+        favoriteList,
+        setFavoriteList,
       } }
     >
       {children}
