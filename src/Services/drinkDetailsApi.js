@@ -6,7 +6,6 @@ async function fetchDrinkDetails(id) {
   try {
     const response = await fetch(urlApi);
     const responseJSON = await response.json();
-    console.log(responseJSON);
     return responseJSON;
   } catch (error) {
     console.log(error);
