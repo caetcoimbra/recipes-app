@@ -76,7 +76,7 @@ function FoodDetails({ match: { params: { id } } }) {
         <span data-testid="recipe-title">
           { recipe.strMeal}
         </span>
-        <ShareButton testid="share-btn" urlShare={ urlShare } />
+        <ShareButton testId="share-btn" urlShare={ urlShare } />
         <FavButton recipe={ recipe } testId="favorite-btn" />
       </section>
       <section>

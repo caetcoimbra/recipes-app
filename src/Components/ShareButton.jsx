@@ -34,12 +34,8 @@ function ShareButton({ testId, urlShare }) {
   );
 }
 
-ShareButton.defaultProps = {
-  testId: '',
-};
-
 ShareButton.propTypes = {
-  testId: PropType.string,
+  testId: PropType.string.isRequired,
   urlShare: PropType.string.isRequired,
 };
 
