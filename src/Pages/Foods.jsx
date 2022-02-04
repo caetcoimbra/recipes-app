@@ -15,9 +15,11 @@ function Foods() {
   return (
     <div>
       <Header pageName="Foods" />
-      <CategoryButtons />
-      {filter === '' ? (<CardList />) : (<Filtered />)}
-      <Footer />
+      <section className="content">
+        <CategoryButtons />
+        {filter === '' ? (<CardList />) : (<Filtered />)}
+        <Footer />
+      </section>
     </div>
   );
 }

@@ -14,9 +14,11 @@ function Drinks() {
   return (
     <div>
       <Header pageName="Drinks" />
-      <CategoryButtons />
-      {filter === '' ? (<CardList />) : (<Filtered />)}
-      <Filtered />
+      <section className="content">
+        <CategoryButtons />
+        {filter === '' ? (<CardList />) : (<Filtered />)}
+        <Filtered />
+      </section>
       <Footer />
     </div>
   );

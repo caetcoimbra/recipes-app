@@ -10,50 +10,58 @@ function FavRecipeCard({ favFood, index }) {
   const urlShare = currentUrl.replace('/favorite-recipes', urlFood);
   if (favFood.type === 'food') {
     return (
-      <div>
+      <div className="recipe-card-conteiner">
         <Link to={ urlFood }>
-          <img
-            data-testid={ `${index}-horizontal-image` }
-            src={ favFood.image }
-            alt="foto receita"
-          />
-          <div data-testid={ `${index}-horizontal-top-text` }>
-            <span>
-              { `${favFood.nationality} - ${favFood.category}` }
-            </span>
-            <div data-testid={ `${index}-horizontal-name` }>
-              { favFood.name }
+          <div className="fav-list-conteiner">
+            <img
+              data-testid={ `${index}-horizontal-image` }
+              src={ favFood.image }
+              alt="foto receita"
+            />
+            <div data-testid={ `${index}-horizontal-top-text` }>
+              <span>
+                { `${favFood.nationality} - ${favFood.category}` }
+              </span>
+              <div data-testid={ `${index}-horizontal-name` }>
+                { favFood.name }
+              </div>
             </div>
           </div>
         </Link>
-        <FavButton recipe={ favFood } testId={ `${index}-horizontal-favorite-btn` } />
-        <ShareButton
-          testId={ `${index}-horizontal-share-btn` }
-          urlShare={ urlShare }
-        />
+        <div className="fav-btn-conteiner">
+          <FavButton recipe={ favFood } testId={ `${index}-horizontal-favorite-btn` } />
+          <ShareButton
+            testId={ `${index}-horizontal-share-btn` }
+            urlShare={ urlShare }
+          />
+        </div>
       </div>
     );
   } if (favFood.type === 'drink') {
     return (
-      <div>
+      <div className="recipe-card-conteiner">
         <Link to={ urlFood }>
-          <img
-            data-testid={ `${index}-horizontal-image` }
-            src={ favFood.image }
-            alt=""
-          />
-          <span data-testid={ `${index}-horizontal-top-text` }>
-            { favFood.alcoholicOrNot }
-          </span>
-          <div data-testid={ `${index}-horizontal-name` }>
-            {favFood.name}
+          <div className="fav-list-conteiner">
+            <img
+              data-testid={ `${index}-horizontal-image` }
+              src={ favFood.image }
+              alt=""
+            />
+            <span data-testid={ `${index}-horizontal-top-text` }>
+              { favFood.alcoholicOrNot }
+            </span>
+            <div data-testid={ `${index}-horizontal-name` }>
+              {favFood.name}
+            </div>
           </div>
         </Link>
-        <FavButton recipe={ favFood } testId={ `${index}-horizontal-favorite-btn` } />
-        <ShareButton
-          testId={ `${index}-horizontal-share-btn` }
-          urlShare={ urlFood }
-        />
+        <div className="fav-btn-conteiner">
+          <FavButton recipe={ favFood } testId={ `${index}-horizontal-favorite-btn` } />
+          <ShareButton
+            testId={ `${index}-horizontal-share-btn` }
+            urlShare={ urlFood }
+          />
+        </div>
       </div>
     );
   }

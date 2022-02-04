@@ -5,10 +5,11 @@
 header {
   align-content: space-between;
   background-color: rgb(200, 200, 200);
-  display: flex;
   flex-direction: row;
   height: 50px;
   justify-content: space-between;
+  position: fixed;
+  top: 0;
   width: 100%;
 }
 

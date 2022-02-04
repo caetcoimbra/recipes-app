@@ -54,28 +54,30 @@ function FavRecipe({ location: { pathname } }) {
   return (
     <>
       <Header pageName="Favorite Recipes" />
-      <section>
-        <button
-          type="button"
-          data-testid="filter-by-all-btn"
-          onClick={ handleClickAll }
-        >
-          All
-        </button>
-        <button
-          type="button"
-          data-testid="filter-by-food-btn"
-          onClick={ handleClickFood }
-        >
-          Food
-        </button>
-        <button
-          type="button"
-          data-testid="filter-by-drink-btn"
-          onClick={ handleClickDrink }
-        >
-          Drinks
-        </button>
+      <section className="content">
+        <div className="filter-conteiner">
+          <button
+            type="button"
+            data-testid="filter-by-all-btn"
+            onClick={ handleClickAll }
+          >
+            All
+          </button>
+          <button
+            type="button"
+            data-testid="filter-by-food-btn"
+            onClick={ handleClickFood }
+          >
+            Food
+          </button>
+          <button
+            type="button"
+            data-testid="filter-by-drink-btn"
+            onClick={ handleClickDrink }
+          >
+            Drinks
+          </button>
+        </div>
       </section>
       <section>
         { renderFavRecipes() }

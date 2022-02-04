@@ -12,7 +12,7 @@ function Explore() {
   return (
     <>
       <Header pageName="Explore" />
-      <section>
+      <section className="content">
         <Link to="/explore/foods">
           <div data-testid="explore-foods" className="explore-btn">Explore Foods</div>
         </Link>
