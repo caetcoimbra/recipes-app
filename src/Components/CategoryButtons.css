@@ -1,0 +1,30 @@
+.buttons__container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.button__item {
+  background-color: #ae2012;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  margin: 10px;
+  max-height: 10%;
+  max-width: 25%;
+  text-align: center;
+  width: 25%;
+}
+
+@media screen and ( max-width : 360px ) {
+
+  .buttons__container {
+    align-items: center;
+    display: flex;
+    flex-flow: wrap column;
+  }
+
+  .button__item {
+    max-width: 100%;
+  }
+}

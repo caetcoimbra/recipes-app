@@ -14,9 +14,13 @@ function Foods() {
 
   return (
     <div>
-      <Header pageName="Foods" />
-      <section className="content">
+      <div>
+        <Header pageName="Foods" />
+      </div>
+      <div className="d-flex flex-row justify-content-center mt-4">
         <CategoryButtons />
+      </div>
+      <section className="content">
         {filter === '' ? (<CardList />) : (<Filtered />)}
         <Filtered />
       </section>
