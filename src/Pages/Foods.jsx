@@ -18,8 +18,9 @@ function Foods() {
       <section className="content">
         <CategoryButtons />
         {filter === '' ? (<CardList />) : (<Filtered />)}
-        <Footer />
+        <Filtered />
       </section>
+      <Footer />
     </div>
   );
 }

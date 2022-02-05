@@ -4,13 +4,14 @@ import React from 'react';
 function RecipeCard({ recipeCardId, cardImgId, imgSrc, imgStr, cardName, cardClass }) {
   return (
     <div data-testid={ recipeCardId } className={ cardClass }>
-      <img src={ imgSrc } alt={ imgStr } data-testid={ cardImgId } />
+      <img data-testid={ cardImgId } src={ imgSrc } alt={ imgStr } />
       <span data-testid={ cardName }>{imgStr}</span>
     </div>
   );
 }
 
 RecipeCard.defaultProps = {
+  recipeCardId: '',
   cardClass: '',
   cardImgId: '',
   imgStr: '',
@@ -22,7 +23,7 @@ RecipeCard.propTypes = {
   cardImgId: PropTypes.string,
   imgSrc: PropTypes.string,
   imgStr: PropTypes.string,
-  recipeCardId: PropTypes.string.isRequired,
+  recipeCardId: PropTypes.string,
   cardName: PropTypes.string.isRequired,
 };
 
