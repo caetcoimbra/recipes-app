@@ -48,62 +48,69 @@ function SearchBar(props) {
   };
 
   return (
-    <>
-      <input
-        className="search-input"
-        data-testid="search-input"
-        type="text"
-        placeholder="Search recipes"
-        value={ input }
-        onChange={ ({ target }) => { setInput(target.value); validateInput(target); } }
-      />
-      <div className="input-button-container">
-        <label htmlFor="input-ingredient">
-          <input
-            data-testid="ingredient-search-radio"
-            type="radio"
-            name="search"
-            id="input-ingredient"
-            value="Ingredient"
-            className="radio-button"
-            onChange={ ({ target }) => { setFilter(target.value); } }
-          />
-          Ingredients
-        </label>
-        <label htmlFor="input-name">
-          <input
-            data-testid="name-search-radio"
-            type="radio"
-            name="search"
-            id="input-name"
-            value="Name"
-            className="radio-button"
-            onChange={ ({ target }) => { setFilter(target.value); } }
-          />
-          Name
-        </label>
-        <label htmlFor="input-first">
-          <input
-            data-testid="first-letter-search-radio"
-            type="radio"
-            name="search"
-            id="input-first"
-            value="First Letter"
-            className="radio-button"
-            onChange={ ({ target }) => { setFilter(target.value); } }
-          />
-          First Letter
-        </label>
+    <section className="search__container d-flex flex-column text-center">
+      <div className="search__fields__container d-flex flex-column">
+        <input
+          className="search-input
+          text-center
+          form-control
+          form-control-lg
+          text-center
+          "
+          data-testid="search-input"
+          type="text"
+          placeholder="Search recipes"
+          value={ input }
+          onChange={ ({ target }) => { setInput(target.value); validateInput(target); } }
+        />
+        <div>
+          <label htmlFor="input-ingredient">
+            <input
+              data-testid="ingredient-search-radio"
+              type="radio"
+              name="search"
+              id="input-ingredient"
+              value="Ingredient"
+              className="radio-button"
+              onChange={ ({ target }) => { setFilter(target.value); } }
+            />
+            Ingredients
+          </label>
+          <label htmlFor="input-name">
+            <input
+              data-testid="name-search-radio"
+              type="radio"
+              name="search"
+              id="input-name"
+              value="Name"
+              className="radio-button"
+              onChange={ ({ target }) => { setFilter(target.value); } }
+            />
+            Name
+          </label>
+          <label htmlFor="input-first">
+            <input
+              data-testid="first-letter-search-radio"
+              type="radio"
+              name="search"
+              id="input-first"
+              value="First Letter"
+              className="radio-button"
+              onChange={ ({ target }) => { setFilter(target.value); } }
+            />
+            First Letter
+          </label>
+        </div>
+        <button
+          data-testid="exec-search-btn"
+          className="search-button btn-lg btn-block"
+          type="button"
+          onClick={ handleClick }
+        >
+          Search
+        </button>
       </div>
-      <button
-        data-testid="exec-search-btn"
-        className="search-button"
-        type="button"
-        onClick={ handleClick }
-      >
-        Search
-      </button>
-    </>
+    </section>
   );
 }
 

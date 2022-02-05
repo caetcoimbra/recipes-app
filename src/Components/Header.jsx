@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import PropType from 'prop-types';
 import { useHistory } from 'react-router-dom';
-import './Header.css';
 import profileIcon from '../images/profileIcon.svg';
 import SearchBar from './SearchBar';
 import searchIcon from '../images/searchIcon.svg';
@@ -25,8 +24,16 @@ function Header(props) {
   }
 
   return (
-    <>
-      <header className="header-conteiner">
+    <section className="d-flex flex-column align-items-center">
+      <header
+        className="d-flex
+      flex-row
+      justify-content-between
+      w-100
+      bg-white
+      shadow p-4 bg-body rounded
+      "
+      >
         <input
           data-testid="profile-top-btn"
           type="image"
@@ -35,12 +42,12 @@ function Header(props) {
           onClick={ () => history.push('/profile') }
         />
         <div data-testid="page-title">
-          { pageName }
+          <h3 className="font-weight-bold">{ pageName }</h3>
         </div>
         { hasSearch && renderSearchButton() }
       </header>
       { searchBar && <SearchBar pageName={ pageName } /> }
-    </>
+    </section>
   );
 }
 

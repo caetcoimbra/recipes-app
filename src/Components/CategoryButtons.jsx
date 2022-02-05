@@ -1,4 +1,5 @@
 import React, { useContext, useRef, useEffect } from 'react';
+import './CategoryButtons.css';
 import { useLocation } from 'react-router-dom';
 import Button from './Button';
 import RecipeContext from '../Context/RecipeContext';
@@ -44,10 +45,11 @@ function CategoryButtons() {
   function generateCategoriesButtons() {
     if (pathname === '/foods') {
       return (
-        <div>
+        <div className="buttons__container">
           {foodCategoriesArray.map((meal, index) => (
             <Button
               key={ index }
+              btnClass="button__item btn-lg btn-block"
               btnMethod={ submitFilter }
               btnTestId={ `${meal.strCategory}-category-filter` }
               btnText={ meal.strCategory }
@@ -55,6 +57,7 @@ function CategoryButtons() {
             />
           ))}
           <Button
+            btnClass="button__item btn-lg btn-block"
             btnMethod={ () => setFilter('') }
             btnTestId="All-category-filter"
             btnText="All"
