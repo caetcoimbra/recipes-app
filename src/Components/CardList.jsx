@@ -10,6 +10,7 @@ function CardList() {
     drinksArray,
     mealsArray,
     setDrinksArray,
+    filteredIngredient,
   } = useContext(RecipeContext);
   const fetchedDrinks = useDrinks();
   const { pathname } = useLocation();
@@ -19,21 +20,21 @@ function CardList() {
   }, [setDrinksArray, fetchedDrinks]);
 
   function renderList() {
-    if (pathname === '/foods') {
+    if (pathname === '/foods' && filteredIngredient !== true) {
       return (
         <div>
-          {mealsArray.map((meal, i) => (
+          {mealsArray.map((meal, index) => (
             <Link
               to={ `/foods/${meal.idMeal}` }
-              key={ i }
+              key={ index }
             >
               <RecipeCard
-                recipeCardId={ `${i}-recipe-card` }
+                recipeCardId={ `${index}-recipe-card` }
                 cardClass="recipe__card"
-                cardImgId={ `${i}-card-img` }
+                cardImgId={ `${index}-card-img` }
                 imgSrc={ meal.strMealThumb }
                 imgStr={ meal.strMeal }
-                cardName={ `${i}-card-name` }
+                cardName={ `${index}-card-name` }
               />
             </Link>
           ))}
@@ -41,21 +42,21 @@ function CardList() {
       );
     }
 
-    if (pathname === '/drinks') {
+    if (pathname === '/drinks' && filteredIngredient !== true) {
       return (
         <div>
-          {drinksArray.map((drink, i) => (
+          {drinksArray.map((drink, index) => (
             <Link
               to={ `/drinks/${drink.idDrink}` }
-              key={ i }
+              key={ index }
             >
               <RecipeCard
-                recipeCardId={ `${i}-recipe-card` }
+                recipeCardId={ `${index}-recipe-card` }
                 cardClass="recipe__card"
-                cardImgId={ `${i}-card-img` }
+                cardImgId={ `${index}-card-img` }
                 imgSrc={ drink.strDrinkThumb }
                 imgStr={ drink.strDrink }
-                cardName={ `${i}-card-name` }
+                cardName={ `${index}-card-name` }
               />
             </Link>
           ))}

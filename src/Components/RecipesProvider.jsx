@@ -9,6 +9,7 @@ function RecipeProvider(props) {
   const fetchFoodCategories = useFoodCategories();
   const fetchDrinkCategories = useDrinkCategories();
   const [hasSearch, setSearchBtn] = useState(true);
+  const [filtered, setFiltered] = useState([]);
   const [searchBar, setSearchBar] = useState(false);
   const [mealsArray, setMealsArray] = useState([]);
   const [drinksArray, setDrinksArray] = useState([]);
@@ -18,6 +19,7 @@ function RecipeProvider(props) {
   const [pathname, setPathname] = useState('');
   const fetchedFoods = useFoods();
   const [filter, setFilter] = useState('');
+  const [filteredIngredient, setFilteredIngredient] = useState(false);
   const { children } = props;
 
   useEffect(() => {
@@ -47,6 +49,10 @@ function RecipeProvider(props) {
         setPathname,
         favoriteList,
         setFavoriteList,
+        filtered,
+        setFiltered,
+        filteredIngredient,
+        setFilteredIngredient,
       } }
     >
       {children}
