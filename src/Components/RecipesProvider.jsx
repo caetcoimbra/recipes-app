@@ -20,6 +20,7 @@ function RecipeProvider(props) {
   const fetchedFoods = useFoods();
   const [filter, setFilter] = useState('');
   const [filteredIngredient, setFilteredIngredient] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const { children } = props;
 
   useEffect(() => {
@@ -53,6 +54,8 @@ function RecipeProvider(props) {
         setFiltered,
         filteredIngredient,
         setFilteredIngredient,
+        isLoading,
+        setIsLoading,
       } }
     >
       {children}

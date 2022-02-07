@@ -5,28 +5,46 @@ import Footer from '../Components/Footer';
 import Header from '../Components/Header';
 import RecipeContext from '../Context/RecipeContext';
 import Filtered from '../Components/Filtered';
+import Loading from '../Components/Loading';
 
 function Foods() {
-  const { setSearchBtn, filter } = useContext(RecipeContext);
+  const {
+    setSearchBtn,
+    filter,
+    isLoading,
+    mealsArray,
+    drinksArray,
+    setIsLoading,
+    filteredIngredient,
+  } = useContext(RecipeContext);
   useEffect(() => {
     setSearchBtn(true);
   });
 
+  useEffect(() => {
+    if (mealsArray.length !== 0 || drinksArray.length !== 0) {
+      setIsLoading(false);
+    }
+  }, [mealsArray, drinksArray, setIsLoading]);
+
   return (
-    <div>
+    isLoading ? <Loading /> : (
       <div>
-        <Header pageName="Foods" />
+        <div>
+          <Header pageName="Foods" />
+        </div>
+        <div className="d-flex flex-row justify-content-center mt-4">
+          <CategoryButtons />
+        </div>
+        <section>
+          {filter === ''
+            && filteredIngredient === false ? (<CardList />) : (<Filtered />)}
+        </section>
+        <div>
+          <Footer />
+        </div>
       </div>
-      <div className="d-flex flex-row justify-content-center mt-4">
-        <CategoryButtons />
-      </div>
-      <section className="content">
-        {filter === '' ? (<CardList />) : (<Filtered />)}
-        <Filtered />
-      </section>
-      <Footer />
-    </div>
-  );
+    ));
 }
 
 export default Foods;
