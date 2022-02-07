@@ -17,23 +17,25 @@ import './Footer.css';
 
 function Footer() {
   const history = useHistory();
-  const { setFilter } = useContext(RecipeContext);
+  const { setFilter, setFilteredIngredient } = useContext(RecipeContext);
 
   const drinkRedirect = () => {
     history.push('/drinks');
     setFilter('');
+    setFilteredIngredient(false);
   };
 
   const mealRedirect = () => {
     history.push('/foods');
     setFilter('');
+    setFilteredIngredient(false);
   };
 
   const exploreRedirect = () => {
     history.push('/explore');
   };
   return (
-    <footer data-testid="footer" className="footer border-top bg-white">
+    <footer data-testid="footer" className="footer border-top bg-white fixed-bottom">
       <span
         id="drinkBtn"
         data-testid="drinks-bottom-btn"

@@ -67,10 +67,11 @@ function CategoryButtons() {
     }
     if (pathname === '/drinks') {
       return (
-        <div>
+        <div className="buttons__container">
           {drinkCategoriesArray.map((drink, index) => (
             <Button
               key={ index }
+              btnClass="button__item btn-lg btn-block"
               btnMethod={ submitFilter }
               btnTestId={ `${drink.strCategory}-category-filter` }
               btnText={ drink.strCategory }
@@ -78,6 +79,7 @@ function CategoryButtons() {
             />
           ))}
           <Button
+            btnClass="button__item btn-lg btn-block"
             btnMethod={ () => setFilter('') }
             btnTestId="All-category-filter"
             btnText="All"

@@ -1,29 +1,22 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import RecipeContext from '../Context/RecipeContext';
 import RecipeCard from './RecipeCard';
-import useDrinks from '../Hooks/useDrinks';
 import './CardList.css';
 
 function CardList() {
   const {
     drinksArray,
     mealsArray,
-    setDrinksArray,
     filteredIngredient,
   } = useContext(RecipeContext);
-  const fetchedDrinks = useDrinks();
   const { pathname } = useLocation();
-
-  useEffect(() => {
-    setDrinksArray(fetchedDrinks);
-  }, [setDrinksArray, fetchedDrinks]);
 
   function renderList() {
     if (pathname === '/foods' && filteredIngredient !== true) {
       return (
         <div className="container">
-          <div className="container__meals">
+          <div className="container__items">
             {mealsArray.map((meal, index) => (
               <Link
                 to={ `/foods/${meal.idMeal}` }
@@ -47,7 +40,7 @@ function CardList() {
     if (pathname === '/drinks' && filteredIngredient !== true) {
       return (
         <div className="container">
-          <div className="container__drinks">
+          <div className="container__items">
             {drinksArray.map((drink, index) => (
               <Link
                 to={ `/drinks/${drink.idDrink}` }

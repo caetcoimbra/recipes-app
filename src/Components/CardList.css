@@ -7,7 +7,7 @@
   width: 100%;
 }
 
-.container__meals {
+.container__items {
   cursor: pointer;
   display: grid;
   gap: 10px;
@@ -23,7 +23,7 @@ span {
 
 @media screen and ( max-width : 360px ) {
 
-  .container__meals {
+  .container__items {
     display: grid;
     gap: 10px;
     grid-template-columns: 1fr 1fr;

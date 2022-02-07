@@ -32,7 +32,7 @@ function Filtered() {
     if (pathname === '/foods') {
       return (
         <div className="container">
-          <div className="container__meals">
+          <div className="container__items">
             {filtered.map((meal, index) => (
               <Link
                 to={ `/foods/${meal.idMeal}` }
@@ -53,21 +53,23 @@ function Filtered() {
     }
     if (pathname === '/drinks') {
       return (
-        <div>
-          {filtered.map((drink, index) => (
-            <Link
-              to={ `/drinks/${drink.idDrink}` }
-              key={ index }
-            >
-              <RecipeCard
-                recipeCardId={ `${index}-recipe-card` }
-                cardImgId={ `${index}-card-img` }
-                imgSrc={ drink.strDrinkThumb }
-                imgStr={ drink.strDrink }
-                cardName={ `${index}-card-name` }
-              />
-            </Link>
-          ))}
+        <div className="container">
+          <div className="container__items">
+            {filtered.map((drink, index) => (
+              <Link
+                to={ `/drinks/${drink.idDrink}` }
+                key={ index }
+              >
+                <RecipeCard
+                  recipeCardId={ `${index}-recipe-card` }
+                  cardImgId={ `${index}-card-img` }
+                  imgSrc={ drink.strDrinkThumb }
+                  imgStr={ drink.strDrink }
+                  cardName={ `${index}-card-name` }
+                />
+              </Link>
+            ))}
+          </div>
         </div>
       );
     }

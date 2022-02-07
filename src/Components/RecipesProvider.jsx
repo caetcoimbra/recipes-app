@@ -4,6 +4,7 @@ import RecipeContext from '../Context/RecipeContext';
 import useFoodCategories from '../Hooks/useFoodCategories';
 import useDrinkCategories from '../Hooks/useDrinkCategories';
 import useFoods from '../Hooks/useFoods';
+import useDrinks from '../Hooks/useDrinks';
 
 function RecipeProvider(props) {
   const fetchFoodCategories = useFoodCategories();
@@ -18,6 +19,7 @@ function RecipeProvider(props) {
   const [favoriteList, setFavoriteList] = useState([]);
   const [pathname, setPathname] = useState('');
   const fetchedFoods = useFoods();
+  const fetchedDrinks = useDrinks();
   const [filter, setFilter] = useState('');
   const [filteredIngredient, setFilteredIngredient] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -25,7 +27,8 @@ function RecipeProvider(props) {
 
   useEffect(() => {
     setMealsArray(fetchedFoods);
-  }, [fetchedFoods]);
+    setDrinksArray(fetchedDrinks);
+  }, [fetchedFoods, fetchedDrinks]);
 
   return (
     <RecipeContext.Provider
