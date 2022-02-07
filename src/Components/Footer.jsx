@@ -33,7 +33,7 @@ function Footer() {
     history.push('/explore');
   };
   return (
-    <footer data-testid="footer" className="footer">
+    <footer data-testid="footer" className="footer border-top bg-white">
       <span
         id="drinkBtn"
         data-testid="drinks-bottom-btn"

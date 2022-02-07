@@ -31,21 +31,23 @@ function Filtered() {
   const renderFiltered = () => {
     if (pathname === '/foods') {
       return (
-        <div>
-          {filtered.map((meal, index) => (
-            <Link
-              to={ `/foods/${meal.idMeal}` }
-              key={ index }
-            >
-              <RecipeCard
-                recipeCardId={ `${index}-recipe-card` }
-                cardImgId={ `${index}-card-img` }
-                imgSrc={ meal.strMealThumb }
-                imgStr={ meal.strMeal }
-                cardName={ `${index}-card-name` }
-              />
-            </Link>
-          ))}
+        <div className="container">
+          <div className="container__meals">
+            {filtered.map((meal, index) => (
+              <Link
+                to={ `/foods/${meal.idMeal}` }
+                key={ index }
+              >
+                <RecipeCard
+                  recipeCardId={ `${index}-recipe-card` }
+                  cardImgId={ `${index}-card-img` }
+                  imgSrc={ meal.strMealThumb }
+                  imgStr={ meal.strMeal }
+                  cardName={ `${index}-card-name` }
+                />
+              </Link>
+            ))}
+          </div>
         </div>
       );
     }
@@ -73,7 +75,7 @@ function Filtered() {
 
   return (
     <div>
-      {renderFiltered()}
+      {(renderFiltered()) }
     </div>
   );
 }

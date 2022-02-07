@@ -3,8 +3,10 @@ import React from 'react';
 
 function RecipeCard({ recipeCardId, cardImgId, imgSrc, imgStr, cardName, cardClass }) {
   return (
-    <div data-testid={ recipeCardId } className={ cardClass }>
-      <img data-testid={ cardImgId } src={ imgSrc } alt={ imgStr } />
+    <div>
+      <div data-testid={ recipeCardId } className={ cardClass }>
+        <img data-testid={ cardImgId } src={ imgSrc } alt={ imgStr } />
+      </div>
       <span data-testid={ cardName }>{imgStr}</span>
     </div>
   );
