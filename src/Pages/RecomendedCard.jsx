@@ -1,22 +1,26 @@
 import React from 'react';
 import PropType from 'prop-types';
+import './DetailsPage.css';
 
 function RecomendedCard({ foods, index, str, thumb }) {
   return (
     <div
       key={ index }
-      data-testid={ `${index}-recomendation-card` }
     >
       <img
         src={ foods[thumb] }
         alt=""
-        className="recomendedImg"
+        className="recommended__img"
+        data-testid={ `${index}-recomendation-card` }
       />
-      <span
-        data-testid={ `${index}-recomendation-title` }
-      >
-        { foods[str] }
-      </span>
+      <div>
+        <span
+          data-testid={ `${index}-recomendation-title` }
+          className="recommended__text"
+        >
+          { foods[str] }
+        </span>
+      </div>
     </div>
   );
 }

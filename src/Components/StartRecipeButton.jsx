@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import PropType from 'prop-types';
+import '../Pages/DetailsPage.css';
 
 function StartRecipeButton(props) {
   const [isDone, setDone] = useState();
