@@ -11,10 +11,29 @@ function FoodInProgress({
   },
 }) {
   const history = useHistory();
+  const [recipe, setRecipe] = useState({});
   const redirect = () => {
+    let doneRecipe = JSON.parse(localStorage.getItem('doneRecipes'));
+    if (!doneRecipe) {
+      doneRecipe = [];
+    }
+    const date = new Date();
+    const dateFunction = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+    const currRecipe = {
+      id: recipe.idMeal,
+      type: 'food',
+      nationality: recipe.strArea,
+      category: recipe.strCategory,
+      alcoholicOrNot: '',
+      name: recipe.strMeal,
+      image: recipe.strMealThumb,
+      doneDate: dateFunction,
+      tags: recipe.strTags.split(', '),
+    };
+    doneRecipe.push(currRecipe);
+    localStorage.setItem('doneRecipes', JSON.stringify(doneRecipe));
     history.push('/done-recipes');
   };
-  const [recipe, setRecipe] = useState({});
   const ingredientsKeys = [];
   const measurmentKey = [];
   const urlShare = window.location.href;
@@ -45,7 +64,6 @@ function FoodInProgress({
   }
   return (
     <div>
-      <div>Food Details</div>
       <img
         src={ recipe.strMealThumb }
         alt=""

@@ -11,11 +11,30 @@ function DrinkInProgress({
   },
 }) {
   const history = useHistory();
-  const redirect = () => {
-    history.push('/done-recipes');
-  };
   const urlShare = window.location.href;
   const [recipe, setRecipe] = useState({});
+  const redirect = () => {
+    let doneRecipe = JSON.parse(localStorage.getItem('doneRecipes'));
+    if (!doneRecipe) {
+      doneRecipe = [];
+    }
+    const date = new Date();
+    const dateFunction = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+    const currRecipe = {
+      id: recipe.idDrink,
+      type: 'drink',
+      nationality: '',
+      category: recipe.strCategory,
+      alcoholicOrNot: recipe.strAlcoholic,
+      name: recipe.strDrink,
+      image: recipe.strDrinkThumb,
+      doneDate: dateFunction,
+      tags: [],
+    };
+    doneRecipe.push(currRecipe);
+    localStorage.setItem('doneRecipes', JSON.stringify(doneRecipe));
+    history.push('/done-recipes');
+  };
   const ingredientsKeys = [];
   const measurmentKey = [];
   useEffect(() => {
@@ -46,7 +65,6 @@ function DrinkInProgress({
   }
   return (
     <div>
-      <div>Drink Details</div>
       <img
         src={ recipe.strDrinkThumb }
         alt=""
