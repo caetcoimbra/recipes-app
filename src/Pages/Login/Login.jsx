@@ -73,7 +73,7 @@ function Login({ history }) {
               inputTestId="password-input"
               inputType="password"
               inputName="senha"
-              inputPlaceHolder="Senha"
+              inputPlaceHolder="Password"
               inputValue={ senha }
               inputMethod={ handleChange }
             />

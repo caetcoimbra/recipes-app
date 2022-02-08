@@ -44,7 +44,14 @@ function DrinkDetails({ match: { params: { id } } }) {
           key={ index }
           data-testid={ `${index}-ingredient-name-and-measure` }
         >
-          { `${recipe[ingredient]} ${recipe[measurmentKey[index]]}`}
+          <div className="recipe__ingredient__container">
+            <span className="recipe__ingredient__name">{`${recipe[ingredient]}`}</span>
+            <span
+              className="recipe__ingredient_amount"
+            >
+              {`${recipe[measurmentKey[index]]}`}
+            </span>
+          </div>
         </li>
       ))
     );
