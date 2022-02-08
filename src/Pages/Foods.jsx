@@ -13,19 +13,19 @@ function Foods() {
     filter,
     isLoading,
     mealsArray,
-    drinksArray,
     setIsLoading,
     filteredIngredient,
   } = useContext(RecipeContext);
+
   useEffect(() => {
     setSearchBtn(true);
   });
 
   useEffect(() => {
-    if (mealsArray.length !== 0 || drinksArray.length !== 0) {
+    if (mealsArray.length !== 0) {
       setIsLoading(false);
     }
-  }, [mealsArray, drinksArray, setIsLoading]);
+  }, [mealsArray, setIsLoading]);
 
   return (
     isLoading ? <Loading /> : (
