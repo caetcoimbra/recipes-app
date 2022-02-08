@@ -24,6 +24,9 @@
     align-items: center;
     display: flex;
     flex-flow: wrap column;
+    justify-content: center;
+    margin-right: 15px;
+    width: 80vw;
   }
 
   .button__item {
