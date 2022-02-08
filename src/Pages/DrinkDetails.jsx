@@ -44,7 +44,14 @@ function DrinkDetails({ match: { params: { id } } }) {
           key={ index }
           data-testid={ `${index}-ingredient-name-and-measure` }
         >
-          { `${recipe[ingredient]} ${recipe[measurmentKey[index]]}`}
+          <div className="recipe__ingredient__container">
+            <span className="recipe__ingredient__name">{`${recipe[ingredient]}`}</span>
+            <span
+              className="recipe__ingredient_amount"
+            >
+              {`${recipe[measurmentKey[index]]}`}
+            </span>
+          </div>
         </li>
       ))
     );
@@ -65,35 +72,62 @@ function DrinkDetails({ match: { params: { id } } }) {
   }
 
   return (
-    <>
-      <img
-        src={ recipe.strDrinkThumb }
-        alt="drink"
-        data-testid="recipe-photo"
-        className="recipe-photo"
-      />
-      <section>
-        <span data-testid="recipe-title">{ recipe.strDrink }</span>
-        <ShareButton testId="share-btn" urlShare={ urlShare } />
-        <FavButton recipe={ recipe } testId="favorite-btn" />
+    <section className="recipe__container">
+
+      <section className="recipe__photo__container">
+        <img
+          src={ recipe.strDrinkThumb }
+          alt="drink"
+          data-testid="recipe-photo"
+          className="recipe-photo"
+        />
       </section>
-      <section>
-        <span data-testid="recipe-category">
-          { `${recipe.strCategory} - ${recipe.strAlcoholic}` }
-        </span>
-        <ul>
-          Ingredients
-          { renderIngredients() }
-        </ul>
-        <div data-testid="instructions">
-          { recipe.strInstructions }
-        </div>
+
+      <section className="recipe__info__container">
+        <section className="recipe__title__container">
+          <span data-testid="recipe-title">
+            <h2 className="recipe__title__text">{ recipe.strDrink}</h2>
+          </span>
+        </section>
+
+        <section className="recipe__icons__container">
+          <ShareButton testId="share-btn" urlShare={ urlShare } />
+          <FavButton recipe={ recipe } testId="favorite-btn" />
+        </section>
+
       </section>
-      <section className="recomended-conteiner">
+
+      <section className="recipe__category__container">
+
+        <section className="recipe__category__text">
+          <span data-testid="recipe-category">
+            { `${recipe.strCategory} - ${recipe.strAlcoholic}` }
+          </span>
+        </section>
+
+        <section className="recipe__list__container">
+          <p>Ingredients</p>
+          <ul className="recipe__list__list">
+            { renderIngredients() }
+          </ul>
+        </section>
+
+        <section className="recipe__instructions__container">
+          <div data-testid="instructions">
+            { recipe.strInstructions }
+          </div>
+        </section>
+      </section>
+
+      <section className="recipe__recommended__container">
         { renderRecomendation() }
       </section>
-      <StartRecipeButton recipe={ recipe } idType="idDrink" />
-    </>
+
+      <section className="recipe__start__btn__container">
+        <StartRecipeButton recipe={ recipe } idType="idDrink" />
+      </section>
+
+    </section>
   );
 }
 
