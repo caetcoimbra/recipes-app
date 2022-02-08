@@ -11,7 +11,7 @@
   animation: spin 0.5s linear infinite;
   border: 16px solid #f3f3f3; /* Light grey */
   border-radius: 50%;
-  border-top: 16px solid #ae2012;
+  border-top: 16px solid var(--carmesim);
   height: 120px;
   width: 120px;
 }

@@ -8,7 +8,7 @@
 }
 
 .search-button {
-  background-color: #ae2012;
+  background-color: var(--carmesim);
   border: none;
   color: white;
 }

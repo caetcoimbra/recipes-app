@@ -6,7 +6,7 @@
 }
 
 .button__item {
-  background-color: #ae2012;
+  background-color: var(--carmesim);
   border: none;
   border-radius: 5px;
   box-sizing: border-box;

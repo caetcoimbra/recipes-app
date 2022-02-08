@@ -18,7 +18,7 @@
 }
 
 span {
-  color: #ae2012;
+  color: var(--carmesim);
 }
 
 @media screen and ( max-width : 360px ) {

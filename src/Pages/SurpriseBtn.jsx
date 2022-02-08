@@ -3,7 +3,7 @@ import PropType from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import fetchRandomRecipe from '../Services/randomRecipeApi';
 
-function SurpriseBtn({ type }) {
+function SurpriseBtn({ type, surpriseBtnClass, surpriseClass }) {
   const history = useHistory();
   function handleClick() {
     const randomRecipe = fetchRandomRecipe(type);
@@ -16,18 +16,28 @@ function SurpriseBtn({ type }) {
     });
   }
   return (
-    <button
-      data-testid="explore-surprise"
-      type="button"
-      onClick={ handleClick }
-    >
-      Surprise me!
-    </button>
+    <div className={ surpriseClass }>
+      <button
+        data-testid="explore-surprise"
+        type="button"
+        onClick={ handleClick }
+        className={ surpriseBtnClass }
+      >
+        Surprise me!
+      </button>
+    </div>
   );
 }
 
+SurpriseBtn.defaultProps = {
+  surpriseClass: '',
+  surpriseBtnClass: '',
+};
+
 SurpriseBtn.propTypes = {
   type: PropType.string.isRequired,
+  surpriseBtnClass: PropType.string,
+  surpriseClass: PropType.string,
 };
 
 export default SurpriseBtn;
