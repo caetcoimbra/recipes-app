@@ -1,10 +1,10 @@
 .container {
   align-items: center;
+  box-sizing: border-box;
   display: flex;
   justify-content: center;
-  margin-bottom: 100px;
   padding: 0;
-  width: 100%;
+  width: 100vw;
 }
 
 .container__items {
@@ -12,7 +12,7 @@
   display: grid;
   gap: 10px;
   grid-template-columns: 1fr 1fr 1fr;
-  margin-bottom: 5px;
+  margin-bottom: 50px;
   padding: 10px;
   text-align: center;
 }
@@ -28,7 +28,7 @@ span {
     gap: 10px;
     grid-template-columns: 1fr 1fr;
     height: auto;
-    margin-bottom: 5px;
-    width: auto;
+    margin-bottom: 50px;
+    width: 100%;
   }
 }
