@@ -1,5 +1,10 @@
 .recipe-card-conteiner {
-  margin: 0 40px;
+  align-items: center;
+  display: flex;
+  flex-flow: column wrap;
+  gap: 20px;
+  margin-top: 20px;
+  text-align: center;
 }
 
 .filter-conteiner {
@@ -8,9 +13,13 @@
 }
 
 .filter-conteiner button {
-  background-color: rgb(200 200 200);
-  border: 1px solid black;
-  margin: 5px 0;
+  background-color: var(--carmesim);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: 700;
+  margin: 10px;
+  text-align: center;
   width: 100px;
 }
 
@@ -27,6 +36,6 @@
 }
 
 img {
-  border-radius: 15px;
+  border-radius: 100%;
   width: 160px;
 }

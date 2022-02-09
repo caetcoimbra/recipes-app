@@ -18,6 +18,8 @@ function FavRecipeCard({ favFood, index }) {
               src={ favFood.image }
               alt="foto receita"
             />
+          </div>
+          <div className="recipe__card__container">
             <div data-testid={ `${index}-horizontal-top-text` }>
               <span>
                 { `${favFood.nationality} - ${favFood.category}` }
