@@ -1,4 +1,5 @@
 import React, { useEffect, useContext, useState } from 'react';
+import './RecipeDone.css';
 import Header from '../Components/Header';
 import RecipeContext from '../Context/RecipeContext';
 import RecipeDoneCard from '../Components/RecipeDoneCard';
@@ -28,7 +29,7 @@ function RecipeDone() {
 
   function renderCards() {
     return (
-      doneRecipesState
+      doneRecipesState && doneRecipesState
         .filter((recipe) => recipe.type.includes(filterDone))
         .map((recipe, index) => {
           const currentUrl = window.location.href;
@@ -61,7 +62,7 @@ function RecipeDone() {
   }
 
   return (
-    <>
+    <section className="recipe__done__container">
       <Header pageName="Done Recipes" />
       <section className="content">
         <div className="filter-conteiner">
@@ -89,7 +90,7 @@ function RecipeDone() {
         </div>
         { renderCards() }
       </section>
-    </>
+    </section>
   );
 }
 

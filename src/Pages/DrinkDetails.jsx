@@ -123,9 +123,7 @@ function DrinkDetails({ match: { params: { id } } }) {
         { renderRecomendation() }
       </section>
 
-      <section className="recipe__start__btn__container">
-        <StartRecipeButton recipe={ recipe } idType="idDrink" />
-      </section>
+      <StartRecipeButton recipe={ recipe } idType="idDrink" />
 
     </section>
   );

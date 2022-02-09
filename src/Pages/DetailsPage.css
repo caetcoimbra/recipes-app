@@ -118,44 +118,32 @@
     margin-left: 75px;
   }
 
-  .recipe__start__btn__container {
-    bottom: 0;
-    display: flex;
-    justify-content: center;
-    position: fixed;
-    width: 100%;
-  }
-
   .start-button {
     background-color: var(--carmesim);
     border: none;
     border-radius: 5px;
+    bottom: 0;
     color: white;
     font-size: 1.2em;
     font-weight: 700;
     padding: 20px;
+    position: fixed;
     text-align: center;
     width: 100vw;
-  }
-
-  .recipe__end__btn__container {
-    bottom: 0;
-    display: flex;
-    justify-content: center;
-    position: fixed;
-    width: 100%;
   }
 
   .recipe__end__btn {
     background-color: var(--carmesim);
     border: none;
     border-radius: 5px;
+    bottom: 0;
     color: white;
     font-size: 1.2em;
     font-weight: 700;
     padding: 20px;
+    position: fixed;
     text-align: center;
-    width: 100%;
+    width: 100vw;
   }
 
 }
