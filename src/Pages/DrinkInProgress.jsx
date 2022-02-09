@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropType from 'prop-types';
 import { useHistory } from 'react-router-dom';
+import './DetailsPage.css';
 import fetchDrinkDetails from '../Services/drinkDetailsApi';
 import FavButton from '../Components/FavButton';
 import ShareButton from '../Components/ShareButton';
@@ -57,42 +58,77 @@ function DrinkInProgress({
     });
     return ingredientsKeys.map((ingredient, index) => (
       <li key={ index } data-testid={ `${index}-ingredient-step` }>
-        <input type="checkbox" />
-        {' '}
-        {`${recipe[ingredient]} ${recipe[measurmentKey[index]]}`}
+        <div className="recipe__ingredient__container">
+          <div>
+            <input type="checkbox" style={ { margin: '10px' } } />
+            <span className="recipe__ingredient__name">{`${recipe[ingredient]}`}</span>
+          </div>
+          <span
+            className="recipe__ingredient__amount"
+          >
+            {`${recipe[measurmentKey[index]]}`}
+          </span>
+        </div>
       </li>
     ));
   }
   return (
-    <div>
-      <img
-        src={ recipe.strDrinkThumb }
-        alt=""
-        data-testid="recipe-photo"
-        className="recipe-photo"
-      />
-      <section>
-        <span data-testid="recipe-title">{recipe.strDrink}</span>
-        <ShareButton testId="share-btn" urlShare={ urlShare } />
-        <FavButton testId="favorite-btn" recipe={ recipe } />
+    <section className="recipe__container">
+      <section className="recipe__photo__container">
+        <img
+          src={ recipe.strDrinkThumb }
+          alt={ recipe.strDrinkThumb }
+          data-testid="recipe-photo"
+          className="recipe-photo"
+        />
       </section>
-      <section>
-        <span data-testid="recipe-category">{recipe.strCategory}</span>
-        <ul>
-          <strong>Ingredients</strong>
-          {renderIngredients()}
-        </ul>
-        <div data-testid="instructions">{recipe.strInstructions}</div>
+
+      <section className="recipe__info__container">
+
+        <section className="recipe__title__container">
+          <span data-testid="recipe-title">
+            <h2 className="recipe__title__text">{ recipe.strDrink}</h2>
+          </span>
+        </section>
+
+        <section className="recipe__icons__container">
+          <ShareButton testId="share-btn" urlShare={ urlShare } />
+          <FavButton testId="favorite-btn" recipe={ recipe } />
+        </section>
+
       </section>
-      <button
-        type="button"
-        data-testid="finish-recipe-btn"
-        value="Finalizar"
-        onClick={ redirect }
-      >
-        Finalizar
-      </button>
-    </div>
+      <section className="recipe__category__container">
+        <section className="recipe__category__text">
+          <span data-testid="recipe-category">{ recipe.strCategory }</span>
+        </section>
+
+        <section className="recipe__list__container">
+          <p>Ingredients</p>
+          <ul className="recipe__list__list">
+            { renderIngredients() }
+          </ul>
+        </section>
+
+        <section className="recipe__instructions__container">
+          <div data-testid="instructions">
+            { recipe.strInstructions }
+          </div>
+        </section>
+
+      </section>
+
+      <section className="recipe__end__btn__container">
+        <button
+          type="button"
+          data-testid="finish-recipe-btn"
+          className="recipe__end__btn"
+          value="Finalizar"
+          onClick={ redirect }
+        >
+          Finalizar
+        </button>
+      </section>
+    </section>
   );
 }
 
