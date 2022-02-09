@@ -65,10 +65,11 @@ function RecipeDone() {
     <section className="recipe__done__container">
       <Header pageName="Done Recipes" />
       <section className="content">
-        <div className="filter-conteiner">
+        <div className="recipe__filter__container">
           <button
             type="button"
             data-testid="filter-by-all-btn"
+            className="recipe__filter__btn"
             onClick={ handleClickAll }
           >
             All
@@ -76,6 +77,7 @@ function RecipeDone() {
           <button
             type="button"
             data-testid="filter-by-food-btn"
+            className="recipe__filter__btn"
             onClick={ handleClickFood }
           >
             Food
@@ -83,6 +85,7 @@ function RecipeDone() {
           <button
             type="button"
             data-testid="filter-by-drink-btn"
+            className="recipe__filter__btn"
             onClick={ handleClickDrink }
           >
             Drinks

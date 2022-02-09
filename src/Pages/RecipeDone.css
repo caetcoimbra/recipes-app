@@ -10,4 +10,24 @@
     margin-top: 20px;
   }
 
+  .recipe__filter__container {
+    align-items: center;
+    display: flex;
+    flex-flow: column wrap;
+    gap: 20px;
+    justify-content: space-evenly;
+    margin: 20px;
+    width: 100%;
+  }
+
+  .recipe__filter__btn {
+    background-color: var(--carmesim);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    width: 50%;
+  }
+
 }
