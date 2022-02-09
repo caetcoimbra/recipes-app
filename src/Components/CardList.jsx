@@ -15,7 +15,7 @@ function CardList() {
   function renderList() {
     if (pathname === '/foods' && filteredIngredient !== true) {
       return (
-        <div className="container">
+        <div className="container__recipes">
           <div className="container__items">
             {mealsArray.map((meal, index) => (
               <Link
@@ -39,7 +39,7 @@ function CardList() {
 
     if (pathname === '/drinks' && filteredIngredient !== true) {
       return (
-        <div className="container">
+        <div className="container__recipes">
           <div className="container__items">
             {drinksArray.map((drink, index) => (
               <Link

@@ -1,20 +1,20 @@
-.container {
+.container__recipes {
   align-items: center;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   padding: 0;
-  width: 100vw;
+  width: 100%;
 }
 
 .container__items {
   cursor: pointer;
   display: grid;
-  gap: 10px;
+  gap: 30px;
   grid-template-columns: repeat(3, 1fr);
-  padding: 10px;
+  margin-bottom: 50px;
+  padding: 50px 0;
   text-align: center;
-  width: 100%;
 }
 
 span {
@@ -24,10 +24,10 @@ span {
 @media screen and ( max-width : 360px ) {
 
   .container__items {
+    cursor: pointer;
     display: grid;
-    gap: 10px;
-    grid-template-columns: 1fr 1fr;
-    height: auto;
+    gap: 5px;
+    grid-template-columns: repeat(2, 1fr);
     margin-bottom: 50px;
     width: 100%;
   }

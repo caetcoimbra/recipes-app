@@ -34,10 +34,6 @@ function Header(props) {
       shadow p-4 bg-body rounded
       "
       >
-        <div data-testid="page-title">
-          <h3 className="font-weight-bold">{ pageName }</h3>
-        </div>
-
         <input
           data-testid="profile-top-btn"
           type="image"
@@ -45,6 +41,9 @@ function Header(props) {
           alt="profile icon"
           onClick={ () => history.push('/profile') }
         />
+        <div data-testid="page-title">
+          <h3 className="font-weight-bold">{ pageName }</h3>
+        </div>
         { hasSearch && renderSearchButton() }
       </header>
       { searchBar && <SearchBar pageName={ pageName } /> }

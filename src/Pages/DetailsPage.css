@@ -86,6 +86,7 @@
     display: flex;
     flex-flow: column wrap;
     margin: 20px;
+    padding-bottom: 100px;
   }
 
   .recipe__instructions__container > div {
@@ -101,10 +102,9 @@
   }
 
   .recipe__recommended__container {
-    background-color: var(--carmesim);
     display: flex;
-    margin-bottom: 100px;
     overflow: auto;
+    padding-bottom: 50px;
     white-space: nowrap;
   }
 
@@ -119,22 +119,41 @@
   }
 
   .recipe__start__btn__container {
+    bottom: 0;
     display: flex;
     justify-content: center;
-    width: 100vw;
+    position: fixed;
+    width: 100%;
   }
 
   .start-button {
     background-color: var(--carmesim);
     border: none;
     border-radius: 5px;
-    bottom: 0;
     color: white;
     font-size: 1.2em;
     font-weight: 700;
     padding: 20px;
+    text-align: center;
+    width: 100vw;
+  }
+
+  .recipe__end__btn__container {
+    bottom: 0;
+    display: flex;
+    justify-content: center;
     position: fixed;
-    right: 0;
+    width: 100%;
+  }
+
+  .recipe__end__btn {
+    background-color: var(--carmesim);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 1.2em;
+    font-weight: 700;
+    padding: 20px;
     text-align: center;
     width: 100%;
   }

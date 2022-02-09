@@ -2,3 +2,7 @@
 
   --carmesim: #ae2012;
 }
+
+* {
+  box-sizing: border-box;
+}
