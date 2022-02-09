@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import './RecipeDoneCard.css';
 import ShareButton from './ShareButton';
 
+// componente Card receitas prontas
+
 function RecipeDoneCard({
   image, index, category, name, date, tags, urlShare, linkPath }) {
   function renderTags() {
