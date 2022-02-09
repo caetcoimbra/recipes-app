@@ -1,5 +1,6 @@
 import React, { useEffect, useContext, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import './Ingredients.css';
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
 import RecipeContext from '../Context/RecipeContext';
@@ -35,22 +36,27 @@ function ExploreDrinkIngredient() {
   const renderIngredients = () => {
     if (drinksIngredientsArray.length !== 0) {
       return (
-        <div className="mt-5">
-          {drinksIngredientsArray.map((ingredient, index) => (
-            <Link
-              to="/drinks"
-              key={ index }
-              onClick={ () => setDrinkIngredientFilter(ingredient.strIngredient1) }
-            >
-              <RecipeCard
-                recipeCardId={ `${index}-ingredient-card` }
-                cardImgId={ `${index}-card-img` }
-                imgSrc={ `https://www.thecocktaildb.com/images/ingredients/${ingredient.strIngredient1}-Small.png` }
-                imgStr={ ingredient.strIngredient1 }
-                cardName={ `${index}-card-name` }
-              />
-            </Link>
-          ))}
+        <div className="explore__ingredient__container">
+          <div className="explore__ingredient__ingredients">
+            {drinksIngredientsArray.map((ingredient, index) => (
+              <Link
+                to="/drinks"
+                key={ index }
+                onClick={ () => setDrinkIngredientFilter(ingredient.strIngredient1) }
+              >
+                <RecipeCard
+                  recipeCardId={ `${index}-ingredient-card` }
+                  cardImgId={ `${index}-card-img` }
+                  imgSrc={ `https://www.thecocktaildb.com/images/ingredients/${ingredient.strIngredient1}-Small.png` }
+                  imgStr={ ingredient.strIngredient1 }
+                  cardName={ `${index}-card-name` }
+                  cardClass="explore__ingredient__card"
+                  cardStrClass="explore__ingredient__card__text"
+                  recipeCardContainer="explore__ingredient__card__container"
+                />
+              </Link>
+            ))}
+          </div>
         </div>
       );
     }

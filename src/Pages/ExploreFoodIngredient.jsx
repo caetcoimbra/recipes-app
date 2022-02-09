@@ -1,5 +1,6 @@
 import React, { useEffect, useContext, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import './Ingredients.css';
 import Footer from '../Components/Footer';
 import Header from '../Components/Header';
 import RecipeContext from '../Context/RecipeContext';
@@ -35,22 +36,27 @@ function ExploreFoodIngredient() {
   const renderIngredients = () => {
     if (ingredientsArray.length !== 0) {
       return (
-        <div className="mt-5">
-          {ingredientsArray.map((ingredient, index) => (
-            <Link
-              to="/foods"
-              key={ index }
-              onClick={ () => setFoodsIngredientFilter(ingredient.strIngredient) }
-            >
-              <RecipeCard
-                recipeCardId={ `${index}-ingredient-card` }
-                cardImgId={ `${index}-card-img` }
-                imgSrc={ `https://www.themealdb.com/images/ingredients/${ingredient.strIngredient}-Small.png` }
-                imgStr={ ingredient.strIngredient }
-                cardName={ `${index}-card-name` }
-              />
-            </Link>
-          ))}
+        <div className="explore__ingredient__container">
+          <div className="explore__ingredient__ingredients">
+            {ingredientsArray.map((ingredient, index) => (
+              <Link
+                to="/foods"
+                key={ index }
+                onClick={ () => setFoodsIngredientFilter(ingredient.strIngredient) }
+              >
+                <RecipeCard
+                  recipeCardId={ `${index}-ingredient-card` }
+                  cardImgId={ `${index}-card-img` }
+                  imgSrc={ `https://www.themealdb.com/images/ingredients/${ingredient.strIngredient}-Small.png` }
+                  imgStr={ ingredient.strIngredient }
+                  cardName={ `${index}-card-name` }
+                  cardClass="explore__ingredient__card"
+                  cardStrClass="explore__ingredient__card__text"
+                  recipeCardContainer="explore__ingredient__card__container"
+                />
+              </Link>
+            ))}
+          </div>
         </div>
       );
     }
