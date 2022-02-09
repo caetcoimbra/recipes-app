@@ -1,5 +1,6 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import './ExploreFoodNation.css';
 import Footer from '../Components/Footer';
 import Header from '../Components/Header';
 import RecipeContext from '../Context/RecipeContext';
@@ -76,18 +77,24 @@ function ExploreFoodNaton() {
   };
 
   return (
-    <>
+    <section className="food__nation__container">
       <Header pageName="Explore Nationalities" />
-      <Select
-        slcTestId="explore-by-nationality-dropdown"
-        optionsArray={ nationsArray }
-        slcName="nationValue"
-        slcValue={ nationValue }
-        slcMethod={ handleChangeSelect }
-      />
-      {renderMeals()}
+      <section className="food__nation__items">
+        <section className="food__nation__select">
+          <Select
+            slcTestId="explore-by-nationality-dropdown"
+            optionsArray={ nationsArray }
+            slcName="nationValue"
+            slcValue={ nationValue }
+            slcMethod={ handleChangeSelect }
+          />
+        </section>
+        <section className="food__nation__meals">
+          {renderMeals()}
+        </section>
+      </section>
       <Footer />
-    </>
+    </section>
   );
 }
 

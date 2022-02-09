@@ -41,7 +41,7 @@ function Header(props) {
           alt="profile icon"
           onClick={ () => history.push('/profile') }
         />
-        <div data-testid="page-title">
+        <div data-testid="page-title" className="ml-4">
           <h3 className="font-weight-bold">{ pageName }</h3>
         </div>
         { hasSearch && renderSearchButton() }
