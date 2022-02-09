@@ -64,7 +64,7 @@ function FoodInProgress({
             <span className="recipe__ingredient__name">{`${recipe[ingredient]}`}</span>
           </div>
           <span
-            className="recipe__ingredient_amount"
+            className="recipe__ingredient__amount"
           >
             {`${recipe[measurmentKey[index]]}`}
           </span>
@@ -77,7 +77,7 @@ function FoodInProgress({
       <section className="recipe__photo__container">
         <img
           src={ recipe.strMealThumb }
-          alt=""
+          alt={ recipe.strMealThumb }
           data-testid="recipe-photo"
           className="recipe-photo"
         />
